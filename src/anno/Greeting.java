@@ -8,7 +8,7 @@ import java.lang.annotation.*;
 @Documented
 public @interface Greeting {
 
-    public enum FontColor{
+    enum FontColor{
         BLUE,
         RED,
         GREEN,

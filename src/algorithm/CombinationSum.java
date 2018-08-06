@@ -51,6 +51,8 @@ public class CombinationSum {
     }
 
     // 第二种情况是不可以重复利用元素
+    // res： 总的结果    tmpList: 临时结果   nums: 待求和的数组元素
+    // remian: 剩余的和    start: 起始位置
     void helperEx(List<List<Integer>> res, List<Integer> tmpList, int[] nums, int remain, int start){
         if (remain < 0)
             return;

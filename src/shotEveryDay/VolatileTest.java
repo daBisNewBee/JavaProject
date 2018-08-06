@@ -9,7 +9,7 @@ import utils.Log;
  * volatile 常用场景：
  *
  * 1. 线程的中断标志位。
- * 2. ：Java使用double check（双重检查）实现单例模式时，
+ * 2. 防止指令重排：Java使用double check（双重检查）实现单例模式时，
  *      单例变量要使用volatile修饰(指令操作的有序性，防止指令重排)
  *
  */
@@ -17,10 +17,18 @@ public class VolatileTest {
 
     volatile static int index = 0;
 
-    volatile static boolean stop = false;
+    volatile static boolean stop = true;
 
     public static void main(String[] args){
 
+        // 场景1：为什么此种场景可以用 volatile？
+        /*
+        * 对变量的写入不依赖其当前值
+        *
+        * 满足： boolean、记录温度变化的变量等
+        * 不满足： i++、 i = i*5;
+        *
+        * */
         // 线程1
         while (!stop){
             // do sth
@@ -38,7 +46,12 @@ public class VolatileTest {
                 @Override
                 public void run() {
                     for (int j=0;j<1000;j++)
-                        index++;
+                        // 此处必须使用"synchronized"!
+                        // 自增操作不是原子操作，volatile 是不能保证原子性的
+                        synchronized (VolatileTest.class){
+                            index++;
+                            // 实际的步骤为：1. 从主存读取index 2. index++ 3. index写入主存
+                        }
                 }
             }.start();
         }

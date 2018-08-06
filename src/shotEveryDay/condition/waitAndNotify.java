@@ -3,6 +3,13 @@ package shotEveryDay.condition;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
+/**
+ *
+ * Java线程间通信之wait/notify:
+ *
+ * https://www.cnblogs.com/chengxiao/p/7043529.html
+ *
+ */
 public class waitAndNotify {
 
     public static int queueSize = 10;
