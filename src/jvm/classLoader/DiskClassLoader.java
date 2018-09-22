@@ -72,8 +72,8 @@ public class DiskClassLoader extends ClassLoader{
             * jvm.classLoader.MyBean cannot be cast to jvm.classLoader.MyBean
             * */
 //            MyBean myBean = (MyBean)c.newInstance();
-            Method method = c.getDeclaredMethod("say",null);
-            method.invoke(object,null);
+            Method method = c.getDeclaredMethod("say");
+            method.invoke(object);
         }
 
 

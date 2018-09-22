@@ -112,8 +112,8 @@ public class NotInitialization {
 
 
             Class<?> threadclazz = Class.forName("jvm.classLoader.NotInitialization$SubClass");
-            Method method = threadclazz.getMethod("fun",null);
-            method.invoke(null,null);
+            Method method = threadclazz.getMethod("fun");
+            method.invoke(null);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (NoSuchMethodException e) {

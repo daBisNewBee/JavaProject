@@ -10,10 +10,28 @@ import java.lang.reflect.Method;
 
 class Bean {
     void run(){
-        System.out.println("Proxy.run");
+//        System.out.println("Proxy.run");
     }
 }
 
+/**
+ *
+ * 为何要 inflation ？
+ *  目前MethodAccessor的实现有两种，通过设置inflation，
+ *  ，一种生成java bytecode方式。
+ *  native方式启动快，但运行时间长了不如java方式，
+ *  个人感觉应该是java方式运行长了,jit compiler可以进行优化。
+ *
+ *
+ * 反射为何这么慢？
+ *  java反射是要解析字节码，将内存中的对象进行解析，包括了一些动态类型，所以JVM无法对这些代码进行优化。
+ *  因此，反射操作的效率要比那些非反射操作低得多！
+ *
+ * Inflation机制提高了反射的性能，但是对于重度使用反射的项目可能存在隐患，它带来了两个问题：
+ * （1）初次加载的性能损失；
+ * （2）动态加载的字节码导致PermGen持续增长；
+ *
+ */
 public class ReflectDeep {
 
     static void InvokeCall(int i) throws Exception {
@@ -93,7 +111,7 @@ public class ReflectDeep {
         Method generateMethod = magClz.getDeclaredMethod("generateMethod"
                 , Class.class, java.lang.String.class, Class[].class
                 , Class.class, Class[].class, int.class);
-        Constructor constructor = magClz.getDeclaredConstructor(null);
+        Constructor constructor = magClz.getDeclaredConstructor();
         constructor.setAccessible(true);
         if (!generateMethod.isAccessible())
             generateMethod.setAccessible(true);
