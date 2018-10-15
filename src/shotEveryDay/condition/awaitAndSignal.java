@@ -17,6 +17,8 @@ import java.util.concurrent.locks.ReentrantLock;
  *
  *   await 提供了比 wait 更加强大的机制，譬如提供了可中断或者不可中断的 await 机制等
  *
+ *   使用多个条件变量，避免大量唤醒导致竞争从而减低效率
+ *
  * Conditon中的await()对应Object的wait()；
  Condition中的signal()对应Object的notify()；
  Condition中的signalAll()对应Object的notifyAll()。

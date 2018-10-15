@@ -1,6 +1,8 @@
 package dataStruct;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 
@@ -39,6 +41,13 @@ public class BSTree {
         private int data;
         private TreeNode leftChild = null;
         private TreeNode rightChild = null;
+
+        @Override
+        public String toString() {
+            return "TreeNode{" +
+                    "data=" + data +
+                    '}';
+        }
 
         public TreeNode(int data) {
             this.data = data;
@@ -270,10 +279,50 @@ public class BSTree {
         }
     }
 
+    /**
+     * 广度遍历（层次遍历）
+     *
+     * @param node
+     */
+    public static void levelOrder(TreeNode node){
+        if (node == null)
+            return;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(node);
+        while (!queue.isEmpty()){
+            TreeNode popNode = queue.poll();
+            System.out.println("popNode = " + popNode);
+            if (popNode.leftChild != null)
+                queue.offer(popNode.leftChild);
+            if (popNode.rightChild != null)
+                queue.offer(popNode.rightChild);
+        }
+    }
+
+    /**
+     * 判断是否平衡二叉树：
+     *
+     * 所谓平衡二叉树，是指二叉树中任意一个结点的左右子树的高度之差不超过1
+     *
+     * @param node
+     * @return
+     */
+    public static boolean isBalance(TreeNode node){
+        if (node == null)
+            return true;
+        int leftHeight = TreeNode.height(node.leftChild);
+        int rightHeight = TreeNode.height(node.rightChild);
+        if (Math.abs(leftHeight - rightHeight) > 1)
+            return false;
+        else
+            return isBalance(node.leftChild) && isBalance(node.rightChild);
+    }
+
     // 测试
     public static void main(String[] args) {
         // 创建树
-        int[] values = new int[]{1,2,3,4,5,6,7,8};
+        int[] values = new int[]{7,4,2,1,3,5,8,6};
+//        int[] values = new int[]{1,2,3,4,5,6,7,8};
 //        for (int i = 0; i < 8; i++) {
 //            int num = (int) (Math.random() * 15);
 //            if (!checkDup(values, num))
@@ -287,6 +336,10 @@ public class BSTree {
         for (int i = 1; i < values.length; i++) {
             tree.add(values[i]);
         }
+
+        levelOrder(tree.root);
+
+        System.out.println("isBalance:" + isBalance(tree.root));
 
         System.out.println("树高: " + TreeNode.height(tree.getRoot()));
         System.out.println("树大小: " + TreeNode.size(tree.getRoot()));

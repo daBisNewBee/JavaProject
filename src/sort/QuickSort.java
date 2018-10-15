@@ -29,28 +29,30 @@ public class QuickSort {
 
     // 东拆西补。https://www.cnblogs.com/MOBIN/p/4681369.html
     public static void quickSort(int arr[],int _left,int _right){
-        int left = _left;
-        int right = _right;
+        int i = _left;
+        int j = _right;
         int temp = 0;
-        if(left <= right){   //待排序的元素至少有两个的情况
-            temp = arr[left];  //待排序的第一个元素作为基准元素
-            while(left != right){   //从左右两边交替扫描，直到left = right
+        if(i > j)  //待排序的元素至少有两个的情况
+            return;
 
-                while(right > left && arr[right] >= temp)
-                    right --;        //从右往左扫描，找到第一个比基准元素小的元素
-                arr[left] = arr[right];  //找到这种元素arr[right]后与arr[left]交换
+        temp = arr[i];  //待排序的第一个元素作为基准元素
+        while(i != j){   //从左右两边交替扫描，直到left = right
 
-                while(left < right && arr[left] <= temp)
-                    left ++;         //从左往右扫描，找到第一个比基准元素大的元素
-                arr[right] = arr[left];  //找到这种元素arr[left]后，与arr[right]交换
+            while(j > i && arr[j] >= temp)
+                j --;        //从右往左扫描，找到第一个比基准元素小的元素
+            arr[i] = arr[j];  //找到这种元素arr[right]后与arr[left]交换
 
-            }
-            arr[right] = temp;    //基准元素归位
-            quickSort(arr,_left,left-1);  //对基准元素左边的元素进行递归排序
-            quickSort(arr, right+1,_right);  //对基准元素右边的进行递归排序
+            while(i < j && arr[i] <= temp)
+                i ++;         //从左往右扫描，找到第一个比基准元素大的元素
+            arr[j] = arr[i];  //找到这种元素arr[left]后，与arr[right]交换
+
         }
+        arr[j] = temp;    //基准元素归位
+        quickSort(arr,_left,i-1);  //对基准元素左边的元素进行递归排序
+        quickSort(arr, j+1,_right);  //对基准元素右边的进行递归排序
     }
 
+    @Deprecated
     public void sort(int[] A, int left, int right){
         int index = partrition(A, left, right);
         if (left < index - 1) sort(A, left, index - 1);
@@ -59,7 +61,8 @@ public class QuickSort {
 
     // 找出"基准数"，可以是数组的中值
     public int partrition(int[] A, int left, int right){
-        int pivot = A[left + (right - left)/2];
+        int pivot = A[left];
+//        int pivot = A[left + (right - left)/2];
 //        int pivot = A[left + (left + right)/2]; 错了！
 
         // 不是 "left < right"？
