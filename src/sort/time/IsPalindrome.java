@@ -137,6 +137,7 @@ public class IsPalindrome {
 
     }
 
+    // https://www.cnblogs.com/csbdong/p/5674990.html
     private static Node<Integer> reverse(Node<Integer> head) {
         Node<Integer> pre = null;
 

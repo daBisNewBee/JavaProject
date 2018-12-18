@@ -6,11 +6,11 @@ import java.util.concurrent.TimeUnit;
  *
  * 简单方法：
  *
- * 使用interrupt方法来终端线程可分为两种情况：
+ * 使用interrupt方法来中断线程可分为两种情况：
 
- （1）线程处于阻塞状态，如使用了sleep方法。
+ （1）线程阻塞时：如使用了sleep方法，需要处理InterruptedException异常。可以被interrupt
 
- （2）使用while（！isInterrupted（））{……}来判断线程是否被中断。
+ （2）线程运行时：需要增加判断：使用while（！isInterrupted（））{……}来判断线程是否被中断。
  *
  * 复杂方法：
  *

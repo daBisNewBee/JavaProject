@@ -81,7 +81,7 @@ public class BinTree {
      */
     public void depthFirst(){
         Stack<BinTree> nodeStack = new Stack<>();
-        nodeStack.add(getRoot());
+        nodeStack.push(getRoot());
 
         while (!nodeStack.isEmpty()){
 
@@ -110,7 +110,7 @@ public class BinTree {
 
         Queue<BinTree> nodeQueue = new ArrayDeque<>();
 
-        nodeQueue.add(getRoot());
+        nodeQueue.offer(getRoot());
 
         while (!nodeQueue.isEmpty()){
 
@@ -120,11 +120,11 @@ public class BinTree {
 
             // 注意：先左子树，再右子树。与深度优先不同
             if (node.lChild != null){
-                nodeQueue.add(node.lChild);
+                nodeQueue.offer(node.lChild);
             }
 
             if (node.rChild != null){
-                nodeQueue.add(node.rChild);
+                nodeQueue.offer(node.rChild);
             }
 
         }
