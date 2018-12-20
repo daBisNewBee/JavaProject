@@ -6,6 +6,15 @@ import java.lang.reflect.Field;
 import java.nio.ByteBuffer;
 
 /**
+ *  "堆外内存"（直接内存，实际是native中的C使用malloc分配的内存）
+ *
+ *  优点：（在 IO 操作方面的优势）
+ *      Java如果和外界通讯，把Java 堆中的内容传输到外界，则需要把Java堆复制到非Java堆，
+ *      如果使用native堆，则避免了内容在Java堆和非Java堆之间的copy.
+ *  缺点：
+ *      1. 需要手动回收。（不受java yong gc的影响）
+ *      2. 丢失JVM的自动垃圾回收特点（如果大量使用堆外内存的话）
+ *
  *  分配速度上，堆内存更快！
  *
  *  访问速度上，直接内存更快！
@@ -16,6 +25,15 @@ import java.nio.ByteBuffer;
  *  参考：
  *  Java直接内存与堆内存
  *  https://www.cnblogs.com/z-sm/p/6235157.html?utm_source=itdadao&utm_medium=referral
+ *
+ *  Netty之Java堆外内存扫盲贴：
+ *  http://calvin1978.blogcn.com/articles/directbytebuffer.html
+ *
+ *  从0到1起步-跟我进入堆外内存的奇妙世界：
+ *  https://www.jianshu.com/p/50be08b54bee
+ *
+ *  为什么堆缓存IO操作时，需要一次用户态到内核态的拷贝操作？
+ *  https://blog.csdn.net/qiuwenjie123/article/details/79795699
  *
  */
 public class MemoryTest {
