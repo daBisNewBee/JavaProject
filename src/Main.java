@@ -7,12 +7,12 @@ public class Main {
     public static void main(String[] args) {
 //        System.out.println("Hello World!");
 
-        // 常量位于栈中
+        // 甯搁噺浣嶄簬鏍堜腑
         String str1 = "abc";
         String str2 = "abc";
         log(Boolean.toString(str1 == str2));// true
 
-        // new后的对象位于堆中
+        // new鍚庣殑瀵硅薄浣嶄簬鍫嗕腑
         String str3 = new String("abc");
         log(Boolean.toString(str1 == str3)); // false
 

@@ -24,49 +24,49 @@ public class ClassTest {
             Log.v("str2:"+str2.toString());
 
 
-            // ÒÔString.classÎªÀı
+            // ä»¥String.classä¸ºä¾‹
             String str = new String();
             Class cl = str.getClass();
             /**
-             * »ñÈ¡°üÃû+ÀàÃû<br>
+             * è·å–åŒ…å+ç±»å<br>
              * java.lang.String
              */
             cl.getName();
             /**
-             * Ö»»ñÈ¡ÀàÃû - String
+             * åªè·å–ç±»å - String
              */
             cl.getSimpleName();
             /**
-             * »ñÈ¡Êı×éµÄClass¶ÔÏó<br>
-             * ÒòÎªËùÓĞµÄJavaÀà¶¼¼Ì³Ğ×ÔObject,Êı×éÒ²Ò»Ñù.ËùÒÔÊı×é±¾ÉíÒ²ÊÇ¸öClass, µÃµ½Êı×éµÄClass×ÔÈ»Ò²¿ÉÒÔ×ª»ØÊı×é.
+             * è·å–æ•°ç»„çš„Classå¯¹è±¡<br>
+             * å› ä¸ºæ‰€æœ‰çš„Javaç±»éƒ½ç»§æ‰¿è‡ªObject,æ•°ç»„ä¹Ÿä¸€æ ·.æ‰€ä»¥æ•°ç»„æœ¬èº«ä¹Ÿæ˜¯ä¸ªClass, å¾—åˆ°æ•°ç»„çš„Classè‡ªç„¶ä¹Ÿå¯ä»¥è½¬å›æ•°ç»„.
              */
             cl.getComponentType();
             /**
-             * ·µ»Ø¹¹ÔìÆ÷Êı×é,°üÀ¨³¬ÀàµÄ¹«ÓĞ³ÉÔ±.
+             * è¿”å›æ„é€ å™¨æ•°ç»„,åŒ…æ‹¬è¶…ç±»çš„å…¬æœ‰æˆå‘˜.
              */
             cl.getConstructors();
             /**
-             * ·µ»Ø·½·¨Êı×é,°üÀ¨³¬ÀàµÄ¹«ÓĞ³ÉÔ±.
+             * è¿”å›æ–¹æ³•æ•°ç»„,åŒ…æ‹¬è¶…ç±»çš„å…¬æœ‰æˆå‘˜.
              */
             cl.getMethods();
             /**
-             * ·µ»ØÓòÊı×é,°üÀ¨³¬ÀàµÄ¹«ÓĞ³ÉÔ±.
+             * è¿”å›åŸŸæ•°ç»„,åŒ…æ‹¬è¶…ç±»çš„å…¬æœ‰æˆå‘˜.
              */
             cl.getFields();
             /**
-             * ·µ»ØÈ«²¿¹¹ÔìÆ÷Êı×é,ÎŞÂÛÊÇpublic/private»¹ÊÇprotected,²»°üÀ¨³¬ÀàµÄ³ÉÔ±.
+             * è¿”å›å…¨éƒ¨æ„é€ å™¨æ•°ç»„,æ— è®ºæ˜¯public/privateè¿˜æ˜¯protected,ä¸åŒ…æ‹¬è¶…ç±»çš„æˆå‘˜.
              */
             cl.getDeclaredConstructors();
             /**
-             * ·µ»ØÈ«²¿ÓòÊı×é,ÎŞÂÛÊÇpublic/private»¹ÊÇprotected,²»°üÀ¨³¬ÀàµÄ³ÉÔ±.
+             * è¿”å›å…¨éƒ¨åŸŸæ•°ç»„,æ— è®ºæ˜¯public/privateè¿˜æ˜¯protected,ä¸åŒ…æ‹¬è¶…ç±»çš„æˆå‘˜.
              */
             cl.getDeclaredFields();
             /**
-             * ·µ»ØÈ«²¿·½·¨Êı×é,ÎŞÂÛÊÇpublic/private»¹ÊÇprotected,²»°üÀ¨³¬ÀàµÄ³ÉÔ±.
+             * è¿”å›å…¨éƒ¨æ–¹æ³•æ•°ç»„,æ— è®ºæ˜¯public/privateè¿˜æ˜¯protected,ä¸åŒ…æ‹¬è¶…ç±»çš„æˆå‘˜.
              */
             cl.getDeclaredMethods();
             /**
-             * »ñÈ¡ÀàÇ°µÄĞŞÊÎ·û
+             * è·å–ç±»å‰çš„ä¿®é¥°ç¬¦
              */
             cl.getModifiers();
         }

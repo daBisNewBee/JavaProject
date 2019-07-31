@@ -5,7 +5,7 @@ import java.nio.charset.Charset;
 
 /**
  *
- *  Ò»ÎÄÈÃÄãÃ÷°×Java×Ö½ÚÂë
+ *  ä¸€æ–‡è®©ä½ æ˜Žç™½Javaå­—èŠ‚ç 
  *
  * http://www.importnew.com/24088.html
  */
@@ -13,10 +13,10 @@ public class Char {
 
     /**
      *
-     * ÔÝÊ±ÎÞ·¨´ÓjavapÖÐ »ñµÃ»ù±¾Êý¾ÝÀàÐÍÕ¼ÓÃ³¤¶È¡£
+     * æš‚æ—¶æ— æ³•ä»Žjavapä¸­ èŽ·å¾—åŸºæœ¬æ•°æ®ç±»åž‹å ç”¨é•¿åº¦ã€‚
      *
-     * ×Ö½ÚÂëÖÐÏà¹ØµÄÐÅÏ¢Ö»ÓÐ£º
-     *  ×÷ÓÃÓò¡¢±äÁ¿Ãû¡¢±äÁ¿ÀàÐÍ£¨Ç©Ãû£©µÈ¡£
+     * å­—èŠ‚ç ä¸­ç›¸å…³çš„ä¿¡æ¯åªæœ‰ï¼š
+     *  ä½œç”¨åŸŸã€å˜é‡åã€å˜é‡ç±»åž‹ï¼ˆç­¾åï¼‰ç­‰ã€‚
      *
      LocalVariableTable:
      Start  Length  Slot  Name   Signature
@@ -47,7 +47,7 @@ public class Char {
 
         basic();
 
-        String str = "ÎÒ";
+        String str = "æˆ‘";
 
         byte[] bytesGBK = str.getBytes("GBK");
         byte[] bytesUTF = str.getBytes("UTF-8");
@@ -69,8 +69,8 @@ public class Char {
         System.out.println("bytesUTF = " + bytesUTF.length); // 3
         System.out.println("bytesUNICODE = " + bytesUNICODE.length); // 4
 
-        // ºÏ·¨£¬Ò»¸öÖÐÎÄ×Ö·ûÕ¼Á½¸ö×Ö½Ú
-        char a = 'ÎÒ';
+        // åˆæ³•ï¼Œä¸€ä¸ªä¸­æ–‡å­—ç¬¦å ä¸¤ä¸ªå­—èŠ‚
+        char a = 'æˆ‘';
 
         System.out.println("a = " + a);
 
@@ -80,9 +80,9 @@ public class Char {
         *
         * byte      1
         *
-        * boolean   1 (²»Ò»¶¨¡£Êµ¼ÊÔÚJVMÖÐ²»´æÔÚ¸ÃÀàÐÍ¶¨Òå)
+        * boolean   1 (ä¸ä¸€å®šã€‚å®žé™…åœ¨JVMä¸­ä¸å­˜åœ¨è¯¥ç±»åž‹å®šä¹‰)
         *
-        * char      2 ( C ÓïÑÔÖÐÊÇ1¸ö×Ö½Ú )
+        * char      2 ( C è¯­è¨€ä¸­æ˜¯1ä¸ªå­—èŠ‚ )
         *
         * short     2
         *
@@ -94,7 +94,7 @@ public class Char {
         *
         * double    8
         *
-        * ÒýÓÃ£º
+        * å¼•ç”¨ï¼š
         * reference 4
         *
         * */
@@ -112,31 +112,31 @@ public class Char {
 
         /*
         *
-        * Ð¡×ª´ó£º×Ô¶¯£¬ÒþÊ½×ª»»£¡
+        * å°è½¬å¤§ï¼šè‡ªåŠ¨ï¼Œéšå¼è½¬æ¢ï¼
         *
         * char -> short -> int -> long -> float -> double
         *
-        *   ÕûÐÍ£¬×Ö·ûÐÍ£¬¸¡µãÐÍµÄÊý¾ÝÔÚ»ìºÏÔËËãÖÐÏà»¥×ª»»£¬×ª»»Ê±×ñÑ­ÒÔÏÂÔ­Ôò£º
+        *   æ•´åž‹ï¼Œå­—ç¬¦åž‹ï¼Œæµ®ç‚¹åž‹çš„æ•°æ®åœ¨æ··åˆè¿ç®—ä¸­ç›¸äº’è½¬æ¢ï¼Œè½¬æ¢æ—¶éµå¾ªä»¥ä¸‹åŽŸåˆ™ï¼š
 
-            ÈÝÁ¿Ð¡µÄÀàÐÍ¿É×Ô¶¯×ª»»ÎªÈÝÁ¿´óµÄÊý¾ÝÀàÐÍ£»
+            å®¹é‡å°çš„ç±»åž‹å¯è‡ªåŠ¨è½¬æ¢ä¸ºå®¹é‡å¤§çš„æ•°æ®ç±»åž‹ï¼›
 
-            byte,short,char ¡ú int ¡ú long ¡ú float ¡ú double
+            byte,short,char â†’ int â†’ long â†’ float â†’ double
 
-            byte£¬short£¬charÖ®¼ä²»»áÏà»¥×ª»»£¬ËûÃÇÔÚ¼ÆËãÊ±Ê×ÏÈ»á×ª»»ÎªintÀàÐÍ¡£
+            byteï¼Œshortï¼Œcharä¹‹é—´ä¸ä¼šç›¸äº’è½¬æ¢ï¼Œä»–ä»¬åœ¨è®¡ç®—æ—¶é¦–å…ˆä¼šè½¬æ¢ä¸ºintç±»åž‹ã€‚
 
-            boolean ÀàÐÍÊÇ²»¿ÉÒÔ×ª»»ÎªÆäËû»ù±¾Êý¾ÝÀàÐÍ¡£
+            boolean ç±»åž‹æ˜¯ä¸å¯ä»¥è½¬æ¢ä¸ºå…¶ä»–åŸºæœ¬æ•°æ®ç±»åž‹ã€‚
         *
         * */
         System.out.println(n+1);
 
         /*
         *
-        * ´ó×ªÐ¡£ºÇ¿ÖÆ×ª»»£¡
+        * å¤§è½¬å°ï¼šå¼ºåˆ¶è½¬æ¢ï¼
         * */
 
         long l = 123L;
 
-        int i = (int) l;//±ØÐëÇ¿×ª
+        int i = (int) l;//å¿…é¡»å¼ºè½¬
 
         double d = 3.14;
 
