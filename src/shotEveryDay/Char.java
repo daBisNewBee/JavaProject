@@ -70,9 +70,9 @@ public class Char {
         System.out.println("bytesUNICODE = " + bytesUNICODE.length); // 4
 
         // 合法，一个中文字符占两个字节
-        char a = '我';
+//        char a = '我';
 
-        System.out.println("a = " + a);
+//        System.out.println("a = " + a);
 
         char n = 'b';
 
