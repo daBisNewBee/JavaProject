@@ -4,7 +4,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 /*
-* "从头到尾打印链表":
+* "从尾到头打印链表":
 *
 * 思路：
 *
