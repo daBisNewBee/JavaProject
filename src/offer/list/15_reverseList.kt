@@ -16,7 +16,11 @@ import java.util.*
 *  1. 基本/正规解法：操作指针
 *  2. 使用栈过渡：先入栈，后出栈，注意尾节点置空
 *  3. 两个链表，每次插入到新链表头节点：头即是尾！
-*  4. 递归，注意模板
+*  4. 递归，注意模板 TODO
+*
+*
+*  必须掌握：reverseList2 ！！！！
+*
 * */
 
 // (这个好记忆一点)正规解法:如何调整链表指针，来达到反转链表的目的。
@@ -44,7 +48,7 @@ fun reverseList(pHead:ListNode):ListNode? {
     return reverseHead
 }
 
-// 这个写起来最简单
+// 这个写起来最简单：三个指针；一个循环；4次赋值；
 fun reverseList2(pHead:ListNode):ListNode? {
     var pre:ListNode ?= null
     var cur:ListNode ?= pHead
