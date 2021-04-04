@@ -1,12 +1,10 @@
+import offer.ListNode
+import offer.buildList
 import java.util.*
 import kotlin.collections.ArrayList
 
-class ListNode {
-    var value:Int = 0
-    var next: ListNode? = null
-}
 /*
-* 从头到尾打印链表:
+* "从头到尾打印链表":
 *
 * 思路：
 *
@@ -26,7 +24,7 @@ class ListNode {
 
 
 // "栈"的特性：后进先出，利用该特性过渡
-fun printListFromTailToHead1(head:ListNode):List<Int> {
+fun printListFromTailToHead1(head: ListNode):List<Int> {
     var result:MutableList<Int> = ArrayList()
     var stack:Stack<ListNode> = Stack()
     var node:ListNode ?= head
@@ -78,17 +76,8 @@ fun printListFromTailToHead3(head:ListNode?):List<Int> {
 fun main(){
     var data = arrayOf(1,2,3,4,5,6,7,8,9)
     var head = ListNode()
-    var node = head
-    for (index in data.indices) {
-        node.value = data[index]
-        if (index < data.size - 1) {
-            var next = ListNode()
-            node.next = next
-            node = next
-        } else {
-            node.next = null
-        }
-    }
+    buildList(head, data)
+
     var result = printListFromTailToHead1(head)
     println(result)
 
