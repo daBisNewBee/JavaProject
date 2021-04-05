@@ -16,3 +16,6 @@
 - 递归4道
 - 回溯法2道
 - 其他15道
+
+- [剑指Offer系列刷题笔记汇总](https://cuijiahua.com/blog/2018/02/basis_67.html)
+- [在线编程 > 剑指Offer](https://www.nowcoder.com/ta/coding-interviews?query=&asc=true&order=&page=1)
