@@ -35,7 +35,7 @@ fun findKthToTail(pHead:ListNode, k:Int):ListNode? {
     return tail
 }
 
-fun main() {
+fun main(args:Array<String>){
     var data = arrayOf(1,2,3,4,5,6,7,8,9)
     var head = ListNode()
     buildList(head, data)
