@@ -16,10 +16,10 @@ import offer.buildList
 * 2.2. 倒数第一个节点：next 为空就行
 *
 * */
-fun findKthToTail(pHead:ListNode, k:Int):ListNode? {
+fun findKthToTail(pHead:ListNode?, k:Int):ListNode? {
     if (pHead == null || k <= 0) return null
     var head = pHead
-    var tail = pHead
+    var tail:ListNode = pHead
 
     for (i in 0 until k - 1) {
         if (head?.next != null) {

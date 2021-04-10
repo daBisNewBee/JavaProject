@@ -29,7 +29,7 @@ fun deleteDuplication(pHead:ListNode):ListNode? {
         } else {
             var value = cur.value
             while (cur?.value == value) {
-                cur = cur?.next
+                cur = cur.next
             }
             pre?.next = cur
         }

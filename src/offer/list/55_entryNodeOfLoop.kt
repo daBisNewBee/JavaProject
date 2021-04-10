@@ -53,7 +53,7 @@ fun entryNodeOfLoop2(head:ListNode?):ListNode? {
 
     while (fast?.next != null) {
         slow = slow?.next
-        fast = fast?.next?.next
+        fast = fast.next?.next
         if (slow == fast) {
             while (slow != slow2) {
                 slow = slow?.next

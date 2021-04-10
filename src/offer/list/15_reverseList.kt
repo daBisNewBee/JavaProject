@@ -24,7 +24,7 @@ import java.util.*
 * */
 
 // (这个好记忆一点)正规解法:如何调整链表指针，来达到反转链表的目的。
-fun reverseList(pHead:ListNode):ListNode? {
+fun reverseList(pHead:ListNode?):ListNode? {
     if (pHead == null) return null
 
     var reverseHead:ListNode ?= null
@@ -52,7 +52,7 @@ fun reverseList(pHead:ListNode):ListNode? {
 fun reverseList2(pHead:ListNode):ListNode? {
     var pre:ListNode ?= null
     var cur:ListNode ?= pHead
-    var next:ListNode ?= null
+    var next:ListNode?
     while (cur != null) {
         next = cur.next
         cur.next = pre
@@ -63,7 +63,7 @@ fun reverseList2(pHead:ListNode):ListNode? {
 }
 
 // 使用栈解决
-fun reverseList3(pHead:ListNode):ListNode? {
+fun reverseList3(pHead:ListNode?):ListNode? {
     if (pHead == null) return null
 
     var node:ListNode ?= pHead
@@ -72,7 +72,7 @@ fun reverseList3(pHead:ListNode):ListNode? {
 
     while (node != null) {
         stack.push(node)
-        node = node?.next
+        node = node.next
     }
     var reverseHead:ListNode ?= stack.pop()
     var curNode:ListNode ?= reverseHead
@@ -89,8 +89,8 @@ fun reverseList4(pHead:ListNode?):ListNode? {
     var cur:ListNode ?= pHead
     var newHead:ListNode ?= pHead
     while (cur != null) {
-        var next = cur?.next
-        cur?.next = newHead
+        var next = cur.next
+        cur.next = newHead
         newHead = cur
         cur = next
     }
