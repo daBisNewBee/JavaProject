@@ -27,3 +27,25 @@ fun buildList(head:ListNode, data: List<Int>){
         }
     }
 }
+
+fun printTreePreOrder(root:TreeNode?) {
+    if (root == null) return
+    print(root.value)
+    root.left?.let { printTreePreOrder(root.left) }
+    root.right?.let { printTreePreOrder(root.right) }
+}
+
+fun printTreeInnOrder(root:TreeNode?) {
+    if (root == null) return
+    root.left?.let { printTreeInnOrder(root.left) }
+    print(root.value)
+    root.right?.let { printTreeInnOrder(root.right) }
+
+}
+
+fun printTreePostOrder(root:TreeNode?) {
+    if (root == null) return
+    root.left?.let { printTreePostOrder(root.left) }
+    root.right?.let { printTreePostOrder(root.right) }
+    print(root.value)
+}

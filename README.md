@@ -70,6 +70,9 @@ fun reverseList2(pHead:ListNode):ListNode? {
 
 
 #### 二叉树12道
+- 04_重建二叉树
+
+
 #### 二叉搜索树3道
 #### 数组11道
 #### 字符串8道
