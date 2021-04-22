@@ -30,7 +30,7 @@ fun buildList(head:ListNode, data: List<Int>){
     }
 }
 /*
-* Ç°Ğò¡¢ÖĞĞò¡¢ºóĞòÆäÊµÊÇ DFS µÄÈıÖÖ²ßÂÔ£¬¾ÍÌØÂèÒ»»ØÊÂ
+* å‰åºã€ä¸­åºã€ååºå…¶å®æ˜¯ DFS çš„ä¸‰ç§ç­–ç•¥ï¼Œå°±ç‰¹å¦ˆä¸€å›äº‹
 * */
 
 fun printTreePreOrder(root:TreeNode?) {
@@ -55,7 +55,7 @@ fun printTreePostOrder(root:TreeNode?) {
     print(root.value)
 }
 
-// ¹ã¶ÈÓÅÏÈ BFS
+// å¹¿åº¦ä¼˜å…ˆ BFS
 fun breadthFirst(root: TreeNode) {
 
     var queue = LinkedList<TreeNode>()
@@ -74,7 +74,7 @@ fun breadthFirst(root: TreeNode) {
     }
 }
 
-// Éî¶ÈÓÅÏÈ DFS (ÏÈĞò),ps:±È½Ï³£ÓÃ£¬¼ÇÒä¼òµ¥£¡
+// æ·±åº¦ä¼˜å…ˆ DFS (å…ˆåº),ps:æ¯”è¾ƒå¸¸ç”¨ï¼Œè®°å¿†ç®€å•ï¼
 fun depthFirst(root: TreeNode) {
 
     var stack = Stack<TreeNode>()
@@ -84,7 +84,7 @@ fun depthFirst(root: TreeNode) {
     while (!stack.empty()) {
         var cur = stack.pop()
         print(cur.value)
-        // ×¢ÒâË³Ğò£¬ÎªÁËÏÈ±éÀú×ó×ÓÊ÷£¬ÔÙ±éÀúÓÒ×ÓÊ÷¡£Òò´Ë´Ë´¦ÓÒ×ÓÊ÷ÏÈÈëÕ»
+        // æ³¨æ„é¡ºåºï¼Œä¸ºäº†å…ˆéå†å·¦å­æ ‘ï¼Œå†éå†å³å­æ ‘ã€‚å› æ­¤æ­¤å¤„å³å­æ ‘å…ˆå…¥æ ˆ
         if (cur.right != null) {
             stack.push(cur.right)
         }
@@ -94,7 +94,7 @@ fun depthFirst(root: TreeNode) {
     }
 }
 
-// Éî¶ÈÓÅÏÈ DFS (ÖĞĞò)
+// æ·±åº¦ä¼˜å…ˆ DFS (ä¸­åº)
 fun depthFirstInOrder(root: TreeNode) {
     var stack = Stack<TreeNode>()
     var cur:TreeNode ?= root
