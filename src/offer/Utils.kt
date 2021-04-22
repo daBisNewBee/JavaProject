@@ -1,5 +1,7 @@
 package offer
 
+import java.util.*
+
 fun buildList(head:ListNode, data: Array<Int>){
     var node = head
     for (index in data.indices) {
@@ -27,6 +29,9 @@ fun buildList(head:ListNode, data: List<Int>){
         }
     }
 }
+/*
+* 前序、中序、后序其实是 DFS 的三种策略，就特妈一回事
+* */
 
 fun printTreePreOrder(root:TreeNode?) {
     if (root == null) return
@@ -48,4 +53,61 @@ fun printTreePostOrder(root:TreeNode?) {
     root.left?.let { printTreePostOrder(root.left) }
     root.right?.let { printTreePostOrder(root.right) }
     print(root.value)
+}
+
+// 广度优先 BFS
+fun breadthFirst(root: TreeNode) {
+
+    var queue = LinkedList<TreeNode>()
+
+    queue.offer(root)
+
+    while (!queue.isEmpty()) {
+        var cur = queue.poll()
+        print(cur.value)
+        if (cur.left != null) {
+            queue.offer(cur.left)
+        }
+        if (cur.right != null) {
+            queue.offer(cur.right)
+        }
+    }
+}
+
+// 深度优先 DFS (先序),ps:比较常用，记忆简单！
+fun depthFirst(root: TreeNode) {
+
+    var stack = Stack<TreeNode>()
+
+    stack.push(root)
+
+    while (!stack.empty()) {
+        var cur = stack.pop()
+        print(cur.value)
+        // 注意顺序，为了先遍历左子树，再遍历右子树。因此此处右子树先入栈
+        if (cur.right != null) {
+            stack.push(cur.right)
+        }
+        if (cur.left != null) {
+            stack.push(cur.left)
+        }
+    }
+}
+
+// 深度优先 DFS (中序)
+fun depthFirstInOrder(root: TreeNode) {
+    var stack = Stack<TreeNode>()
+    var cur:TreeNode ?= root
+    while (!stack.empty() || cur != null) {
+        while (cur != null) {
+            stack.push(cur)
+            cur = cur.left
+        }
+        if (!stack.empty()) {
+            cur = stack.pop()
+            print(cur.value)
+            cur = cur.right
+        }
+
+    }
 }
