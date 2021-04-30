@@ -70,14 +70,7 @@ fun mirror2(root:TreeNode?) {
 
 fun main(args:Array<String>) {
     var data = listOf(0,1,2,3,4,5,6,7)
-    var arrays: Array<TreeNode> = Array(data.size) { i -> TreeNode(data[i])}
-
-    for (index in 0 until arrays.size/2) {
-        arrays[index].left = arrays[2*index+1]
-        if (2*index+2 < arrays.size) {
-            arrays[index].right = arrays[2*index+2]
-        }
-    }
+    var arrays = offer.createTree(data)
 
     println("原始数据BFS遍历:")
 

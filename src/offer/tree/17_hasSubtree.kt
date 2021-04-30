@@ -48,7 +48,7 @@ private fun doseTree1HasTree2(tree1:TreeNode?, tree2:TreeNode?):Boolean {
 var index:Int = 0
 
 
-fun createTree(node:TreeNode, n:Int, valueArray:Array<Int>):TreeNode? {
+private fun createTree(node:TreeNode, n:Int, valueArray:Array<Int>):TreeNode? {
     if (valueArray[n] == 0) {
         return null
     } else {

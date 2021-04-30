@@ -2,6 +2,18 @@ package offer
 
 import java.util.*
 
+fun createTree(data:List<Int>):Array<TreeNode> {
+    var arrays: Array<TreeNode> = Array(data.size) { i -> TreeNode(data[i])}
+
+    for (index in 0 until arrays.size/2) {
+        arrays[index].left = arrays[2*index+1]
+        if (2*index+2 < arrays.size) {
+            arrays[index].right = arrays[2*index+2]
+        }
+    }
+    return arrays
+}
+
 fun buildList(head:ListNode, data: Array<Int>){
     var node = head
     for (index in data.indices) {
