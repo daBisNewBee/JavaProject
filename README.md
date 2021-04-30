@@ -76,6 +76,7 @@ fun reverseList2(pHead:ListNode):ListNode? {
 - 22_从上往下打印二叉树 BFS
 - 23_二叉搜索树的后序遍历序
 - 38_二叉树的深度
+- 39_平衡二叉树
 
 
 

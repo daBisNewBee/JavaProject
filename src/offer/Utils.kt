@@ -123,3 +123,12 @@ fun depthFirstInOrder(root: TreeNode) {
 
     }
 }
+
+
+// "树的深度为左、右子树深度的较大值加1"
+fun treeDepth(node: TreeNode?):Int {
+    if (node == null) return 0
+    var i = treeDepth(node.left)
+    var j = treeDepth(node.right)
+    return Math.max(i, j) + 1
+}

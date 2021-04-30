@@ -1,6 +1,7 @@
 package offer.tree
 
 import offer.TreeNode
+import offer.treeDepth
 import java.util.*
 
 /*
@@ -29,13 +30,6 @@ private fun treeDepth(node:TreeNode?):Int {
 }
 */
 
-// "树的深度为左、右子树深度的较大值加1"
-private fun treeDepth2(node: TreeNode?):Int {
-    if (node == null) return 0
-    var i = treeDepth2(node.left)
-    var j = treeDepth2(node.right)
-    return Math.max(i, j) + 1
-}
 
 // 层次遍历
 private fun treeDepth3(node: TreeNode?):Int {
@@ -62,7 +56,7 @@ fun main(args:Array<String>) {
 
     var arrays = offer.createTree(data)
 
-    var depth = treeDepth2(arrays[0])
+    var depth = treeDepth(arrays[0])
 
     println("递归法/分治法： depth: $depth")
 
