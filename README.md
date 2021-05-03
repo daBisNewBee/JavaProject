@@ -78,6 +78,7 @@ fun reverseList2(pHead:ListNode):ListNode? {
 - 38_二叉树的深度
 - 39_平衡二叉树
 - 57_二叉树的下一个结点
+- 58_对称的二叉树
 
 
 #### 二叉搜索树3道
