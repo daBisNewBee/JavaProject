@@ -116,12 +116,12 @@ fun depthFirst(root: TreeNode) {
 fun depthFirstInOrder(root: TreeNode) {
     var stack = Stack<TreeNode>()
     var cur:TreeNode ?= root
-    while (!stack.empty() || cur != null) {
+    while (stack.isNotEmpty() || cur != null) {
         while (cur != null) {
             stack.push(cur)
             cur = cur.left
         }
-        if (!stack.empty()) {
+        if (stack.isNotEmpty()) {
             cur = stack.pop()
             print(cur.value)
             cur = cur.right
