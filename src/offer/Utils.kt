@@ -75,14 +75,20 @@ fun breadthFirst(root: TreeNode) {
     queue.offer(root)
 
     while (!queue.isEmpty()) {
-        var cur = queue.poll()
-        print(cur.value)
-        if (cur.left != null) {
-            queue.offer(cur.left)
+
+        var curLevelSize = queue.size
+
+        while (curLevelSize-- > 0) {
+            var cur = queue.poll()
+            print(cur.value)
+            if (cur.left != null) {
+                queue.offer(cur.left)
+            }
+            if (cur.right != null) {
+                queue.offer(cur.right)
+            }
         }
-        if (cur.right != null) {
-            queue.offer(cur.right)
-        }
+        println()
     }
 }
 
