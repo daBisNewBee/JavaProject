@@ -24,7 +24,7 @@ import kotlin.collections.ArrayList
 * */
 
 // 关键点在于要用两个栈！
-fun print(root:TreeNode?) {
+private fun print(root:TreeNode?) {
     if (root == null) {
         return
     }
