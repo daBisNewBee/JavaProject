@@ -88,6 +88,7 @@ fun reverseList2(pHead:ListNode):ListNode? {
 
 #### 数组
 1、二维数组中的查找
+6、旋转数组的最小数字
 
 
 #### 二叉搜索树3道
