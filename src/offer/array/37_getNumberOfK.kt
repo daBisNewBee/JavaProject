@@ -15,6 +15,8 @@ package offer.array
 *
 * 常规的二分查找，找到k就完事了，此题稍有变动，要找到多个k，即在low、high的边界上调整
 *
+* fixme: 二分查找，可以是找重复数字！不是找到一个就完事了
+*
 * */
 
 fun getNumberOfK(array: IntArray, k:Int):Int {
