@@ -5,6 +5,10 @@ package offer.array
 *
 * 1、二维数组中的查找
 *
+* 在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，
+* 每一列都按照从上到下递增的顺序排序。
+* 请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。
+*
 * 思路：从左下角（或者右上角）开始查找，因为该行右边大于它，
 *      上边小于它，每次比较可以删除某一行或者某一列
 *
@@ -15,7 +19,7 @@ package offer.array
 fun find(array:Array<Array<Int>>, target:Int):Boolean {
     for (i in array.size-1 downTo 0) {
         // 注意："until 不包括边界，".."包括边界 "
-        for (j in 0 until  array[i].size) {
+        for (j in array[i].indices) {
             println("当前 ${array[i][j]} ")
             if (target == array[i][j]) {
                 return true
@@ -69,8 +73,8 @@ fun main(args:Array<String>) {
 
     var array = Array(4) {Array(4) {0} }
     var value = 0
-    for (i in 0 until array.size) {
-        for (j in 0 until array[i].size) {
+    for (i in array.indices) {
+        for (j in array[i].indices) {
             array[i][j] = value++
         }
     }

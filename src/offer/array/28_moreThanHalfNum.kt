@@ -58,7 +58,7 @@ fun moreThanHalfNum(array: List<Int>):Int {
 *
 * 可以先将数组排序，然后可能的众数肯定在数组中间，然后判断一下。
 *
-* 时间复杂度：O(nlongn) （这取决于排序的时间复杂度）
+* 时间复杂度：O(nlogn) （这取决于排序的时间复杂度）
 * */
 fun moreThanHalfNum2(array: List<Int>):Int {
     if (array.isEmpty()) return 0

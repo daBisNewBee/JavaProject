@@ -20,6 +20,15 @@ package offer.array
  *    时间复杂度还是O(n)，但不需要额外空间
  *    缺点：对原数组有改变
  *
+ *    第一遍：
+ *    2,3,1,0,2,5,3
+ *    1,3,2,0,2,5,3
+ *    3,1,2,0,2,5,3
+ *    0,1,2,3,2,5,3
+ *
+ *    第二遍：
+ *    2
+ *
 * */
 
 fun duplicate(numbers: IntArray?, length: Int): Boolean {
