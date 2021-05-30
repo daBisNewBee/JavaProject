@@ -155,6 +155,7 @@ fun reverseList2(pHead:ListNode):ListNode? {
 
 #### 字符串8道
 - 2、替换空格
+- 27、字符串的排列
 
 
 #### 二叉搜索树3道
