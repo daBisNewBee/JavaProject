@@ -16,6 +16,10 @@ package offer.str
 * 第一步：求所有可能出现在第一个位置的字符，即把第一个字符与后面的字符依次交换。
 * 第二步：固定一个字符，求后面所有字符的排列。
 *
+* TODO:
+* 字典序法，既有序，又去重，效率又高，最最关键的是代码少啊，大家一定要背下来。
+* https://blog.csdn.net/babynumber/article/details/42706757
+*
 * */
 
 private var res = mutableSetOf<String>()
