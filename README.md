@@ -157,6 +157,7 @@ fun reverseList2(pHead:ListNode):ListNode? {
 - 2、替换空格
 - 27、字符串的排列
 - 34、第一个只出现一次的字符
+- 43、左旋转字符串
 
 
 #### 二叉搜索树3道
