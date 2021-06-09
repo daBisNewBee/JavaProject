@@ -9,7 +9,7 @@ package offer.str
 *
 * */
 
-//第一种情况：创建新的字符串实现. O(n2)
+//第一种情况：创建新的字符串实现.
 fun replaceSpace(sb:String):String {
     var newSb = StringBuffer()
     for (index in sb.indices) {

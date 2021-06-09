@@ -8,15 +8,25 @@ package offer.str
 * 并返回它的位置, 如果没有则返回 -1（需要区分大小写）。
 * */
 
+// typealias：将Java中的集合类映射过来
+typealias FAKE_STRING = String
+typealias FAKE_MAP<K,V> = HashMap<K,V>
+
 fun firstNotRepeatingChar(s:String):Int {
+    var str:FAKE_STRING ?= ""
     if (s.isEmpty()) return -1
-    var map = LinkedHashMap<Char, Int>()
+    var map = HashMap<Char, Int>()
     for (i in s.indices) {
         map[s[i]] = map.getOrDefault(s[i], 0) + 1
     }
-    map.forEach { (t, u) -> if (u == 1) {
-        return@firstNotRepeatingChar s.indexOfFirst{it == t}
-    }}
+    for (i in s.indices) {
+        if (map[s[i]] == 1) {
+            return i
+        }
+    }
+//    map.forEach { (t, u) -> if (u == 1) {
+//        return@firstNotRepeatingChar s.indexOfFirst{it == t}
+//    }}
     return -1
 }
 
