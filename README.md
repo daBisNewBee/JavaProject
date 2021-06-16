@@ -196,6 +196,7 @@ fun reverseList2(pHead:ListNode):ListNode? {
 
 #### 栈3道
 - 5、用两个栈来实现一个队列
+- 20、包含min函数的栈
 
 #### 递归4道
 #### 回溯法2道
