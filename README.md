@@ -200,6 +200,8 @@ fun reverseList2(pHead:ListNode):ListNode? {
 - 21、栈的压入、弹出序列
 
 #### 递归4道
+- 7、斐波那契数列
+
 #### 回溯法2道
 #### 其他15道
 
