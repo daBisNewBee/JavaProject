@@ -201,6 +201,7 @@ fun reverseList2(pHead:ListNode):ListNode? {
 
 #### 递归4道
 - 7、斐波那契数列
+- 8、跳台阶
 
 #### 回溯法2道
 #### 其他15道
