@@ -32,5 +32,5 @@ fun jumpFloor2(n:Int):Int{
 
 fun main(){
     var ret = jumpFloor2(10)
-    println
+    println("$ret")
 }
