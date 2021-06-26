@@ -193,7 +193,7 @@ fun reverseList2(pHead:ListNode):ListNode? {
 
 #### 数学3道
 - 2、数值的整数次方
-
+- 47、求1+2+3+4+···+n
 
 #### 栈3道
 - 5、用两个栈来实现一个队列
