@@ -214,6 +214,7 @@ fun reverseList2(pHead:ListNode):ListNode? {
 - 31、从1到n整数中1出现的次数
 - 33、丑数
 - 41、和为S的连续正数序列
+- 42、和为S的两个数字
 
 
 
