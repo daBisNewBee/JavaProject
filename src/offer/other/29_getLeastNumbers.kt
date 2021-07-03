@@ -23,9 +23,12 @@ package offer.other
  *
  * 4. 因此，避免时间退化，主元的选择要慎重！避免选择极值
  *
- * 5. 优化实现：TODO
+ * 5. 优化实现：
  *  面试官：手写一个快速排序，并对其改进
  *  https://zhuanlan.zhihu.com/p/82671667
+ *
+ *  TODO：DualPivotQuicksort源码解读
+ *  https://blog.csdn.net/lyj1597374034/article/details/106720629
  *
  *
  * 快速排序的效率取决于"数组划分是否平衡"，即依赖于主元（pivot）的选择。

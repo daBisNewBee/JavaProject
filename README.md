@@ -211,6 +211,7 @@ fun reverseList2(pHead:ListNode):ListNode? {
 #### 其他15道
 - 11、二进制中1的个数
 - 29、最小的K个数
+- 31、从1到n整数中1出现的次数
 
 
 - [剑指Offer系列刷题笔记汇总](https://cuijiahua.com/blog/2018/02/basis_67.html)
