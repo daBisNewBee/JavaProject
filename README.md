@@ -213,6 +213,8 @@ fun reverseList2(pHead:ListNode):ListNode? {
 - 29、最小的K个数
 - 31、从1到n整数中1出现的次数
 - 33、丑数
+- 41、和为S的连续正数序列
+
 
 
 - [剑指Offer系列刷题笔记汇总](https://cuijiahua.com/blog/2018/02/basis_67.html)
