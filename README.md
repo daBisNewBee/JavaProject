@@ -216,7 +216,7 @@ fun reverseList2(pHead:ListNode):ListNode? {
 - 41、和为S的连续正数序列
 - 42、和为S的两个数字
 - 45、扑克牌顺子
-
+- 46、圆圈中最后剩下的数
 
 - [剑指Offer系列刷题笔记汇总](https://cuijiahua.com/blog/2018/02/basis_67.html)
 - [在线编程 > 剑指Offer](https://www.nowcoder.com/ta/coding-interviews?query=&asc=true&order=&page=1)
