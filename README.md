@@ -218,6 +218,7 @@ fun reverseList2(pHead:ListNode):ListNode? {
 - 45、扑克牌顺子
 - 46、圆圈中最后剩下的数
 - 63、数据流中的中位数
+- 64、滑动窗口的最大值
 
 - [剑指Offer系列刷题笔记汇总](https://cuijiahua.com/blog/2018/02/basis_67.html)
 - [在线编程 > 剑指Offer](https://www.nowcoder.com/ta/coding-interviews?query=&asc=true&order=&page=1)

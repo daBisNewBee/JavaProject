@@ -13,6 +13,10 @@ import java.util.*
  *
  * 5是后半部分的最小值，肯定是维系在小顶堆
  *
+ *
+ * 堆结构PriorityQueue比较好的一个解释:
+ * https://blog.csdn.net/qq_35326718/article/details/72866180
+ *
  */
 
 // 堆结构的优秀实现类
