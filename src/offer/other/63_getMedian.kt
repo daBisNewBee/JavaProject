@@ -5,6 +5,8 @@ import java.util.*
 
 /**
  *
+ * 63、数据流中的中位数
+ *
  * 1 2 3 4 5 6 7 8定为最终的数据流
  *
  * 大顶堆 + 小顶堆
@@ -37,7 +39,7 @@ fun insert(_num:Int) {
     // 偶数，插入最小堆
     if (count % 2 == 0) {
         if (maxHeap.isNotEmpty()
-                && maxHeap.peek() < num) {
+                && maxHeap.peek() > num) {
             maxHeap.add(num)
             num = maxHeap.poll()
         }

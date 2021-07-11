@@ -7,9 +7,7 @@ package offer.other
  * 输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。
  *
  */
-
-// fixme: 错误！这个方法负数不行！逐位计算, 移动数字n本身；类似"除2取模法"也不行！
-// 负数，移位后高位补1
+// 方法一：逐位计算, 移动数字本身，注意要无符号移动ushr，不能shr，因为高位负数会补1
 fun numberOf1(n:Int):Int {
     var count = 0
     var flag = n
@@ -17,7 +15,7 @@ fun numberOf1(n:Int):Int {
         if (flag and 1 == 1) {
             count++
         }
-        flag = flag shr 1
+        flag = flag ushr 1
     }
     return count
 }
@@ -32,6 +30,7 @@ fun numberOf2(n:Int):Int {
         if (flag and n != 0) {
             count++
         }
+
         flag = flag shl 1
     }
     return count
@@ -60,10 +59,10 @@ fun numberOf3(_n:Int):Int {
 fun main(){
     var data = listOf(3,7,8,63,64,255,Int.MAX_VALUE, Int.MIN_VALUE)
     data.forEach {
-//        var ret = numberOf1(it)
+        var ret = numberOf1(it)
         var ret2 = numberOf2(it)
         var ret3= numberOf3(it)
-        println("num: $it count2: $ret2 count3: $ret3")
+        println("num: $it count1:$ret  count2: $ret2 count3: $ret3")
     }
 
     var min = Int.MIN_VALUE
