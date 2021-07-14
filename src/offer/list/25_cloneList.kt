@@ -20,84 +20,51 @@ package offer.list
 * */
 
 
-class ListNode {
-    var value:Int = 0
-    var next:ListNode ?= null
-    var random:ListNode ?= null
+class Node(var `val`:Int) {
 
-    fun cloneNode():ListNode{
-        var new = ListNode()
-        new.value = this.value
-        return new
-    }
+    var next:Node ?= null
+    var random:Node ?= null
+
 
     override fun toString(): String {
-        return "ListNode(value=$value ${random?.value})->"
+        return "Node(value=$`val` ${random?.`val`})->"
     }
 }
 
-fun cloneList(pHead:ListNode?):ListNode? {
-    if (pHead == null) return null
-    var map:MutableMap<ListNode, ListNode> = HashMap()
+/**
+ * 只要遍历一次，时间o(n),空间o(n)
+ * TODO: 但是把复制后的节点放到原节点后面，空间o(1)
+ */
 
-    var head:ListNode ?= pHead
-    var newHead:ListNode? = null
-    var cur:ListNode ?= head
-    var last:ListNode ?= null
+var visited:MutableMap<Node, Node> = HashMap()
 
-    while (cur != null) {
-        var newNode = cur.cloneNode()
-        if (newHead == null) {
-            newHead = newNode
-        }
-        last?.next = newNode
-        map[cur] = newNode
-        last = newNode
-        cur = cur.next
+fun getClonedNode(node:Node?):Node? {
+    if(node == null) return null
+    if(!visited.containsKey(node)) {
+        var newNode = Node(node.`val`)
+        visited[node] = newNode
     }
-
-    cur = head
-
-    while (cur != null) {
-        if (cur.random != null) {
-            var curNew = map[cur]
-            var curRandomNew = map[cur.random!!]
-            curNew?.random = curRandomNew
-        }
-        cur = cur.next
-    }
-    return newHead
+    return visited[node]
 }
 
-// 也是用map，但是实现比较简单：第一遍遍历建立新节点，第二遍遍历建立映射关系
-fun cloneList2(pHead:ListNode?):ListNode? {
-    if (pHead == null) return null
-    var map:MutableMap<ListNode, ListNode> = HashMap()
-
-    var newHead = pHead.cloneNode()
-    var cur:ListNode ?= pHead
-    var curNew:ListNode ?= newHead
-
-    while (cur != null) {
-        map[cur] = cur.cloneNode()
-        cur = cur.next
-    }
-
-    cur = pHead
-    while (cur != null) {
-        curNew?.next = map[cur.next]
-        curNew?.random = map[cur.random]
+fun copyRandomList(node: Node?): Node? {
+    if(node == null) return null
+    var cur = node
+    var curNew = getClonedNode(cur)
+    while(cur != null) {
+        curNew?.next = getClonedNode(cur!!.next)
+        curNew?.random = getClonedNode(cur!!.random)
         cur = cur.next
         curNew = curNew?.next
     }
-    return newHead
+    return visited[node]
 }
 
-fun main(args:Array<String>) {
-    var data = Array(5){ListNode()}
-    var last:ListNode? = null
+fun main() {
+    var data = Array(5){Node(0)}
+    var last:Node? = null
     for (index in data.indices) {
-        data[index].value = index
+        data[index].`val` = index
         last?.next = data[index]
         last = data[index]
     }
@@ -106,7 +73,7 @@ fun main(args:Array<String>) {
     data[2].random = data[4]
 
     var head = data[0]
-    var cur:ListNode ? = head
+    var cur:Node ? = head
     while (cur != null) {
         println(cur)
         cur = cur.next
@@ -114,19 +81,10 @@ fun main(args:Array<String>) {
 
     println()
 
-    var ret = cloneList(head)
+    var ret = copyRandomList(head)
     while (ret != null) {
         println(ret)
         ret = ret.next
     }
-
-    println()
-
-    ret = cloneList2(head)
-    while (ret != null) {
-        println(ret)
-        ret = ret.next
-    }
-
 
 }
