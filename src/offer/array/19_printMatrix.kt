@@ -11,52 +11,55 @@ package offer.array
 * */
 
 // 画一画矩阵各个元素索引，找到画圈规律，终止条件等
-fun printMatrix(matrix:Array<Array<Int>>):MutableList<Int> {
+fun spiralOrder(matrix: Array<IntArray>): List<Int> {
+    if(matrix.isEmpty() || matrix[0].isEmpty()) return ArrayList()
+    var rows = matrix.size
+    var columns = matrix[0].size
+    var left = 0
+    var right = columns-1
+    var top = 0
+    var bottom = rows-1
 
-    var row = matrix.size
+    var res = ArrayList<Int>()
 
-    var col = matrix[0].size
+    while(left <= right && top <= bottom) {
+        for(i in left .. right) {
+            res.add(matrix[top][i])
+        }
+        for(j in top+1 .. bottom) {
+            res.add(matrix[j][right])
+        }
+        // 这个条件容易忘记！！
+        if(left < right && top < bottom) {
+            for(i in right-1 downTo left) {
+                res.add(matrix[bottom][i])
+            }
+            for(j in bottom-1 downTo top+1) {
+                res.add(matrix[j][left])
+            }
+        } else {
+            println("这里不满足条件： left:$left right:$right top:$top bottom:$bottom")
+        }
 
-    var res :MutableList<Int> = ArrayList()
-
-    var i = 0
-    // 圈数，从外向内,循环结束条件需要注意
-    while (col > 2*i && row > 2*i) {
-        var endY = col - 1 -i
-        var endX = row - 1 -i
-
-        // 左到右
-        for (j in i..endY)
-            res.add(matrix[i][j])
-
-        // 上到下
-        for (j in i+1..endX)
-            res.add(matrix[j][endY])
-
-        // 右到左
-//        if(endX>i)
-            for (j in endY-1 downTo i) // downTo 包括边界
-                res.add(matrix[endX][j])
-
-        // 下到上
-//        if (endY>i)
-            for (j in endX-1 downTo i+1)
-                res.add(matrix[j][i])
-        i++
+        left++
+        right--
+        top++
+        bottom--
     }
     return res
 }
 
 fun main(args:Array<String>) {
-    var array = Array(4) {Array(4) {0} }
+//    var array = Array(3) { IntArray(3) }
+    var array = Array(4) { IntArray(4) }
     var value = 1
-    for (i in 0 until array.size) {
-        for (j in 0 until array[i].size) {
+    for (i in array.indices) {
+        for (j in array[i].indices) {
             array[i][j] = value++
         }
     }
 
-    var res = printMatrix(array)
+    var res = spiralOrder(array)
 
     res.forEach {
         print("$it,")
