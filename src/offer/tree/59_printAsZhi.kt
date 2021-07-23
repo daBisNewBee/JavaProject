@@ -81,12 +81,14 @@ fun print2(root:TreeNode?) {
         var array :MutableList<Int> = ArrayList()
         while (curLevelSize-- > 0) {
             var cur: TreeNode? = queue.pop() ?: continue
+            // 关键点： 在BFS的基础上，仅仅在reverse层，改变插入数组的顺序(即：打印顺序)，其他一样
             if (!isReverse) {
                 array.add(cur?.value!!)
             } else {
                 // 注意：倒序 = 正序的反转 = add(0, node) 正序按照0位置插入
                 array.add(0, cur?.value!!)
             }
+            //
             if (cur.left != null) {
                 queue.add(cur.left!!)
             }
