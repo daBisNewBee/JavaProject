@@ -17,7 +17,6 @@ class TreeNode(var `val`: Int) {
     var right: TreeNode? = null
 }
 
-class Solution {
 
     var count = 0
 
@@ -35,4 +34,3 @@ class Solution {
         dfs(root, root!!.`val`)
         return count
     }
-}
