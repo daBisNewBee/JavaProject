@@ -128,7 +128,7 @@ fun reverseList2(pHead:ListNode):ListNode? {
     - DFS
     - 高度/深度
 2. 二叉搜索树 BST
-    - 左子树 < 右子树
+    - 左子树 < 右子树(不包括"="的情况)
     - 中序遍历正好就是递增序列
     - ex: 
         - 二叉搜索树的后序遍历序
