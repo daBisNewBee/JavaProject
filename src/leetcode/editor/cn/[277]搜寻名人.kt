@@ -63,6 +63,7 @@
 
 
 class P_277_FindTheCelebrity {
+    /*
     //leetcode submit region begin(Prohibit modification and deletion)
 /* The knows API is defined in the parent class Relation.
       fun knows(a: Int, b: Int) : Boolean {} */
@@ -89,5 +90,5 @@ class Solution: Relation() {
 	}
 }
 //leetcode submit region end(Prohibit modification and deletion)
-
+*/
 }
