@@ -59,7 +59,7 @@
 
 class P_75_SortColors {
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution
+class Solution {
     // 单指针，o(n)，遍历两次，还有双指针解法，可遍历一次
     fun sortColors(nums: IntArray): Unit {
         if (nums.size <= 1) return
