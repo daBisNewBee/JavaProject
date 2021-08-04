@@ -56,6 +56,7 @@ class P_236_LowestCommonAncestorOfABinaryTree {
  */
 
 class Solution {
+
     var parent = HashMap<Int, TreeNode>()
     var visited = HashSet<Int>()
 
@@ -74,8 +75,8 @@ class Solution {
         }
     }
 
-    // 由下往上遍历
-    fun lowestCommonAncestor(root: TreeNode?, p: TreeNode?, q: TreeNode?): TreeNode? {
+    // 2. 由下往上遍历
+    fun lowestCommonAncestor2(root: TreeNode?, p: TreeNode?, q: TreeNode?): TreeNode? {
         dfs(root)
         var P:TreeNode? = p
         while (P != null) {
@@ -92,8 +93,7 @@ class Solution {
         }
         return null
     }
-    /*
-    // 递归法
+    // 优先考虑：1. 递归法
     fun lowestCommonAncestor(root: TreeNode?, p: TreeNode?, q: TreeNode?): TreeNode? {
         if (root == null || root == p || root == q) return root
         var left = lowestCommonAncestor(root.left, p, q)
@@ -106,7 +106,6 @@ class Solution {
         if (right != null) return right
         return null
     }
-    */
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
