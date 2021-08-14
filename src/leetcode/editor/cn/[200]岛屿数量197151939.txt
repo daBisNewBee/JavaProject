@@ -1,0 +1,30 @@
+class Solution {
+
+    fun dfs(grid:Array<CharArray>, r:Int, c:Int) {
+        var rn = grid.size
+        var cn = grid[0].size
+        // 标记已经遍历过，避免后面重复遍历
+        grid[r][c] = '0'
+        if(r-1 >= 0 && grid[r-1][c] == '1') dfs(grid, r-1, c)
+        if(r+1 < rn && grid[r+1][c] == '1') dfs(grid, r+1, c)
+        if(c-1 >= 0 && grid[r][c-1] == '1') dfs(grid, r, c-1)
+        if(c+1 < cn && grid[r][c+1] == '1') dfs(grid, r, c+1)
+    }
+
+    fun numIslands(grid: Array<CharArray>): Int {
+        var rn = grid.size
+        var cn = grid[0].size
+        var count = 0
+        for(i in 0..rn-1) {
+            for(j in 0..cn-1) {
+                if(grid[i][j] == '1') {
+                    count++
+                    dfs(grid, i, j)
+                }
+            }
+        }
+        return count
+    }
+}
+//runtime:180 ms
+//memory:42.4 MB
