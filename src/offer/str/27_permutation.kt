@@ -71,7 +71,7 @@ fun swap(str:CharArray, a:Int, b:Int) {
 
 
 fun main(){
-    var data = "abc"
+    var data = "abcd"
     var ret = permutation(data)
     for (s in ret) {
         println(s)
