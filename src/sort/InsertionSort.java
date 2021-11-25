@@ -21,13 +21,16 @@ public class InsertionSort {
                     tmp = a[j-1];
                     a[j-1] = a[j];
                     a[j] = tmp;
+                } else {
+                    break; //²»ÒªÍüÁËbreak
                 }
             }
         }
     }
 
     public static void main(String[] args) {
-        int[] a = { 49, 38, 65, 97, 76, 13, 27, 50 };
+        int[] a = { 1,2,3,4,5,7,8,9,6 };
+//        int[] a = { 49, 38, 65, 97, 76, 13, 27, 50 };
         new InsertionSort().insertionSort(a);
         System.out.println("a = " + Arrays.toString(a));
     }
