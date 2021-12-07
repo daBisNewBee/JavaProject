@@ -21,9 +21,9 @@ package offer.array
 * 即：
 * B[i] = C[i] * D[i]
 *
-* C[0]=1,C[i]=C[i-1]*A[i-1]
+* C[0]=1,C[i]= C[i-1] * A[i-1]
 *
-* D[len-1]=1,D[i]=D[i+1]*A[i+1]
+* D[len-1]=1,D[i]=A[i+1] * D[i+1]
 *
 * 两个循环分别求得 C[i] 、 D[i]
 *
