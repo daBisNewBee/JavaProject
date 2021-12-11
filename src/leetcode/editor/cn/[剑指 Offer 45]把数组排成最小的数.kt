@@ -1,4 +1,3 @@
-import com.sun.xml.internal.fastinfoset.util.StringArray
 import java.lang.StringBuilder
 
 //输入一个非负整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。
@@ -68,6 +67,33 @@ class Solution {
         }
     }
 
+    fun quickSort(strArray:MutableList<String>, low:Int, high:Int) {
+        if (low >= high) return
+        var mid = getMiddle(strArray, low, high)
+        quickSort(strArray, low, mid-1)
+        quickSort(strArray, mid+1, high)
+    }
+
+    fun getMiddle(strArray:MutableList<String>, low:Int, high:Int):Int {
+        if (low >= high) return low
+
+        var anchor = strArray[low]
+        var i = low
+        var j = high
+        while (i < j) {
+            while (i < j && (strArray[j] + anchor).compareTo(anchor + strArray[j]) >= 0) {
+                j--
+            }
+            strArray[i] = strArray[j]
+            while (i < j && (strArray[i] + anchor).compareTo(anchor + strArray[i]) <= 0) {
+                i++
+            }
+            strArray[j] = strArray[i]
+        }
+        strArray[i] = anchor
+        return i
+    }
+
     fun minNumber(nums: IntArray): String {
         if (nums.isEmpty()) return ""
 
@@ -75,7 +101,8 @@ class Solution {
         for (num in nums) {
             strList.add(num.toString())
         }
-        strList.sortWith(S())
+        quickSort(strList, 0, strList.size-1)
+//        strList.sortWith(S())
 
 //        var c = C()
 //        var ans = nums.sortedWith(c)
@@ -88,4 +115,8 @@ class Solution {
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
+}
+
+fun main() {
+    P_Offer_45_BaShuZuPaiChengZuiXiaoDeShuLcof.Solution().minNumber(intArrayOf(10,2))
 }
