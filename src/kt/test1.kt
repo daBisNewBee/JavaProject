@@ -31,13 +31,42 @@ class Player(val name:String) {
 // inline好处：减少栈的调用；以及函数作为参数时的，实例对象带来的额外内存消耗
 fun foo(body:() -> Unit) {
     println("foo called")
-    ordinaryFunction(body)
+    // 验证"inline函数，不会产生匿名内部类"
+    ordinaryFunction {
+        println("input func11")
+    }
+    /**
+     * 验证"非inline函数，有函数参数时，会生成匿名内部类"
+     * "CHECKCAST kotlin/jvm/functions/Function0"
+     *
+     */
+    normalFucWith0Argu {
+        println("input func22")
+    }
+    /**
+     *
+     * "CHECKCAST kotlin/jvm/functions/Function1"
+     *
+     */
+    normalFucWith1Argu {
+        println("input func33 param:$it")
+    }
 }
 
 inline fun ordinaryFunction(block: () -> Unit) {
     println("haha")
     block.invoke()
     println("hahahaha")
+}
+
+fun normalFucWith0Argu(block: () -> Unit) {
+    println("normalFucWith0Argu called")
+    block.invoke()
+}
+
+fun normalFucWith1Argu(block: (str:String) -> Unit) {
+    println("normalFucWith1Argu called")
+    block.invoke("caonima")
 }
 
 /**
@@ -85,4 +114,6 @@ fun main() {
         "$name $id"
     }
     println(player)
+
+    foo{}
 }
