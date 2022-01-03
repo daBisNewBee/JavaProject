@@ -15,6 +15,16 @@ import kotlin.random.Random
 fun quickSort(array: IntArray, start:Int, end:Int) {
     if (start >= end) return // 容易忘记！！
 
+    if (start > end - 60) {
+        /**
+         *  综合排序：
+         *
+         *  大样本量，采用快排的调度
+         *  小样本时<60，采用插入排序，常数时间低的优势，n2,更快 TODO: 为什么更快呢
+         */
+        return
+    }
+
     // pivot 主元的选择：理想情况，每次都是数组的中位数，效率最高
     var tmpIndex = Random.nextInt(start, end) // 优化：随机取一个，避免待排序数据部分有序，降低效率
     var tmp = array[tmpIndex]
