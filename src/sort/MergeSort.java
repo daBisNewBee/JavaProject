@@ -45,18 +45,18 @@ public class MergeSort {
 
     public void merge(int[] a, int left, int mid, int right, int[] tmp){
 
-        int i = left;
-        int j = mid + 1;
-        int t = 0;
+            int i = left;
+            int j = mid + 1;
+            int t = 0;
 
-        while (i <= mid && j<= right) {
+            while (i <= mid && j<= right) {
 
-            if (a[i] <= a[j]) {
-                tmp[t++] = a[i++];
-            } else {
-                tmp[t++] = a[j++];
+                if (a[i] <= a[j]) {
+                    tmp[t++] = a[i++];
+                } else {
+                    tmp[t++] = a[j++];
+                }
             }
-        }
 
             while (i <= mid)
                 tmp[t++] = a[i++];

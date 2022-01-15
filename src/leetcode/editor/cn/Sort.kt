@@ -22,7 +22,7 @@ fun quickSort(array: IntArray, start:Int, end:Int) {
          *  大样本量，采用快排的调度
          *  小样本时<60，采用插入排序，常数时间低的优势，n2,更快 TODO: 为什么更快呢
          */
-        return
+//        return
     }
 
     // pivot 主元的选择：理想情况，每次都是数组的中位数，效率最高
@@ -110,8 +110,8 @@ fun main() {
     val A = intArrayOf(4, 2, 1, 7, 8, 5, 6, 3)
     //
     println(A.contentToString())
-    insert(A)
+//    insert(A)
 //    bubble(A)
-//    quickSort(A, 0, A.size-1)
+    quickSort(A, 0, A.size-1)
     println(A.contentToString())
 }
