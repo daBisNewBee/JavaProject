@@ -34,7 +34,33 @@ import java.util.*
 class P_215_KthLargestElementInAnArray {
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    fun findKthLargest(nums: IntArray, k: Int): Int {
+
+        /**
+         *
+         * 一般套路：
+         *  求第前k个大：
+         *    小根堆，维持堆的 size 为 k，最后堆顶为结果
+         *
+         *  也可以转换下，即为求"第n-k+1个小"：
+         *    大根堆，维持堆的 size 为 n-k+1，最后堆顶为结果
+         *
+         */
+        fun findKthLargest(nums: IntArray, k: Int): Int {
+            var queue = PriorityQueue<Int>(kotlin.Comparator { o1, o2 -> o1 - o2 })
+            nums.forEach {
+                if (queue.size < k) {
+                    queue.offer(it)
+                } else if (queue.size == k) {
+                    if (it > queue.peek()) {
+                        queue.poll()
+                        queue.offer(it)
+                    }
+                }
+            }
+            return queue.peek()
+        }
+
+    fun findKthLargest_bigDui(nums: IntArray, k: Int): Int {
         // 第k个最大，即：第(n-k+1)个最小数，即：求体积(n-k+1)大根堆的根节点
 
         var queue = PriorityQueue<Int>(Comparator { o1, o2 -> o2 - o1 })
