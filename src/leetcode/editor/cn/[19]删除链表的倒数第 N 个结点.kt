@@ -71,6 +71,7 @@ class Solution {
         return dummy.next
     }
 
+    // 自己写的，虽然过了，但是有点挫
     fun removeNthFromEnd_fuza(head: ListNode?, n: Int): ListNode? {
         if (head == null) return null
         if (n == 1 && head.next == null) return null
