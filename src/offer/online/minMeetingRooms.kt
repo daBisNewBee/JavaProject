@@ -34,6 +34,44 @@ fun minMeetingRooms(intervals: Array<IntArray>): Int {
     return priority.size
 }
 
+/*
+ *
+ *
+ * booking 笔试题，没run出来
+ *
+ * Complete the 'suggestedMeetingTime' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts following parameters:
+ *  1. workingHours - Pair<Int, Int> - Start and end time of the working day
+ *  2. meetings - List<Pair<Int, Int>> - List of meetings
+ *  3. currentTime - Int
+ *  4. duration - Int
+ */
+fun suggestedMeetingTime(workingHours: Pair<Int, Int>,
+                         meetings: List<Pair<Int, Int>>,
+                         currentTime: Int, duration: Int): String {
+    if (currentTime < workingHours.first
+            || currentTime >= workingHours.second) {
+        return "No time available"
+    }
+    var queue = PriorityQueue<Pair<Int, Int>>(kotlin.Comparator { o1, o2 -> o1.second - o2.second })
+    meetings.forEach { queue.offer(it) }
+    var lastFreeTime = 0
+    while (queue.isNotEmpty()) {
+        if (Math.max(lastFreeTime, currentTime) + duration < queue.peek().first ) {
+            var startTime = Math.max(lastFreeTime, currentTime)
+            return "$startTime-${startTime+duration}"
+        }
+        if (currentTime >= queue.peek().second) {
+            queue.poll()
+        } else {
+            lastFreeTime = queue.peek().second
+        }
+    }
+    return "No time available"
+}
+
 fun main() {
     var data = Array(3){IntArray(3)}
 //    data[0] = intArrayOf(5,6)
