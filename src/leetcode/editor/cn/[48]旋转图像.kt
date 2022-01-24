@@ -49,8 +49,27 @@
 class P_48_RotateImage {
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+
+        fun process(matrix: Array<IntArray>, ar:Int, ac:Int, br:Int, bc:Int){
+            for (i in 0 until br-ar) {
+                var tmp = matrix[ar][ac+i]
+                matrix[ar][ac+i] = matrix[br-i][ac]
+                matrix[br-i][ac] = matrix[br][bc-i]
+                matrix[br][bc-i] = matrix[ar+i][bc]
+                matrix[ar+i][bc] = tmp
+            }
+        }
+
+        fun rotate(matrix: Array<IntArray>):Unit {
+            var n = matrix.size
+            for (i in 0 until n / 2) {
+                process(matrix, i, i, n-i-1, n-i-1)
+            }
+        }
+
+
         // 翻转两次
-    fun rotate(matrix: Array<IntArray>): Unit {
+    fun rotate2(matrix: Array<IntArray>): Unit {
         var n = matrix.size
         // 1. 水平翻转
         for (i in 0 until n/2) {
