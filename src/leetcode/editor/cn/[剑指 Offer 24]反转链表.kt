@@ -34,7 +34,19 @@ class P_Offer_24_FanZhuanLianBiaoLcof {
  * }
  */
 class Solution {
-    fun reverseList(head: ListNode?): ListNode? {
+
+    // 递归写法：在"归" 的时候，修改head.next指针，"递"的时候拆解子问题
+    fun reverseList(head: ListNode?):ListNode? {
+        // 递归终止条件
+        if (head?.next == null) return head
+        var ans = reverseList(head.next)
+        head.next?.next = head
+        head.next = null
+        return ans // 返回最后一个节点
+    }
+
+    // 迭代写法
+    fun reverseList2(head: ListNode?): ListNode? {
         if (head == null) {
             return null
         }

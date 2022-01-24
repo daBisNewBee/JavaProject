@@ -85,7 +85,9 @@ private fun postOrder(head: TreeNode?) {
     var tmp = Stack<TreeNode>()
     while (stack.isNotEmpty()) {
         cur = stack.pop()
+        print("${cur.value} ")
         tmp.push(cur)
+        // "中、右、左"：先访问"右"，所以"左"先入队
         if (cur.left != null) {
             stack.push(cur.left)
         }

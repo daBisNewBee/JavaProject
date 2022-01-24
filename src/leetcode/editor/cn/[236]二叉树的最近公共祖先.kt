@@ -93,18 +93,19 @@ class Solution {
         }
         return null
     }
+
+    // 其实也符合"二叉树的递归套路"，想想是吗？是的！Info只有一个信息TreeNode
     // 优先考虑：1. 递归法
     fun lowestCommonAncestor(root: TreeNode?, p: TreeNode?, q: TreeNode?): TreeNode? {
-        if (root == null || root == p || root == q) return root
+        if (root == null) return null
+        if (root == p || root == q) return root
+
         var left = lowestCommonAncestor(root.left, p, q)
         var right = lowestCommonAncestor(root.right, p, q)
         // 说明p、q分列在root的两侧，此时返回root
         if (left != null && right != null) return root
-        // p、q都在左侧
-        if (left != null) return left
-        // p、q都在右侧
-        if (right != null) return right
-        return null
+        // "p、q都在左侧" 或者 "p、q都在右侧"
+        return left ?: right
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
