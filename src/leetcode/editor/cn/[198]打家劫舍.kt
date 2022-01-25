@@ -38,6 +38,36 @@ class P_198_HouseRobber {
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 
+        // 实际只用到了dp数组的最近三个值，所以只要三个变量就够了
+    fun process2(nums: IntArray):Int {
+        if (nums.size == 1) return nums[0]
+        var N = nums.size
+        var a = nums[0]
+        var b = Math.max(nums[0], nums[1])
+        var sum = b
+        for (i in 2 until N) {
+            sum = Math.max(a + nums[i], b)
+            a = b
+            b = sum
+        }
+        return sum
+    }
+
+        // 再写一遍
+    fun process(nums: IntArray):Int {
+        if (nums.size == 1) return nums[0]
+        var N = nums.size
+        // dp[i] 表示到第i家时，能偷到的最大金额数
+        var dp = IntArray(N)
+
+        dp[0] = nums[0]
+        dp[1] = Math.max(nums[0], nums[1])
+        for (i in 2 until N) {
+            dp[i] = Math.max(dp[i-2] + nums[i], dp[i-1])
+        }
+        return dp[N-1]
+    }
+
 
     fun dpWay2(nums: IntArray):Int {
         if (nums.size == 1) return nums[0]
@@ -103,7 +133,9 @@ class Solution {
         for (i in dp.indices) {
             dp[i] = -1
         }
-        return dpWay2(nums)
+        return process2(nums)
+//        return process(nums)
+//        return dpWay2(nums)
 //        return dpWay(nums, 0, dp)
 //        return process(nums, 0)
     }
