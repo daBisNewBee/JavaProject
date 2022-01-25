@@ -24,6 +24,21 @@ import java.util.*
  * 但是选择打印的时机不同，可以实现
  *
  *
+ *  dfs 和 bfs 的区别：
+ *
+ * dfs：
+ * 1. 占用空间少，不保留结点
+ * 2. 速度慢，有回溯操作(入栈、出栈)
+ * 3. 递归实现，代码较容易写
+ *
+ *
+ * bfs：
+ * 1. 占用空间大，保留全部结点
+ * 2. 速度快，无回溯操作
+ *
+ * 树结点较多时，一般用dfs，因为bfs容易内存溢出
+ *
+ *
  *
   */
 private fun f(node:TreeNode?) {
@@ -62,7 +77,7 @@ private fun inOrder(head: TreeNode?) {
         }
         if (stack.isNotEmpty()) {
             cur = stack.pop()
-            println(cur.value)
+            print("${cur.value} ")
             cur = cur.right
         }
     }
@@ -95,8 +110,28 @@ private fun postOrder(head: TreeNode?) {
             stack.push(cur.right)
         }
     }
+    println()
     while (tmp.isNotEmpty()) {
-        println(tmp.pop().value)
+        print("${cur?.value} ")
+    }
+}
+
+/**
+ * 先序
+ */
+private fun preOrder(head: TreeNode?) {
+    var stack = Stack<TreeNode>()
+    stack.push(head)
+    var cur :TreeNode?= null
+    while (stack.isNotEmpty()) {
+        cur = stack.pop()
+        print("${cur.value} ")
+        if (cur.right != null) {
+            stack.push(cur.right)
+        }
+        if (cur.left != null) {
+            stack.push(cur.left)
+        }
     }
 }
 
@@ -106,4 +141,5 @@ fun main() {
     postOrder(arrays[0])
     println()
     inOrder(arrays[0])
+    preOrder(arrays[0])
 }
