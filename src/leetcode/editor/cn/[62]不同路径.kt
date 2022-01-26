@@ -55,6 +55,24 @@ class P_62_UniquePaths {
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 
+        // 再写一遍：dp[i][j] 表示从原点出发，到[i][j]的路径数量
+        fun dpWay2(m: Int, n: Int):Int {
+            var dp = Array(m){IntArray(n)}
+            for (i in 0 until m) {
+                dp[i][0] = 1
+            }
+            for (i in 0 until n) {
+                dp[0][i] = 1
+            }
+            for (i in 1 until m) {
+                for (j in 1 until n) {
+                    dp[i][j] = dp[i-1][j]
+                    dp[i][j] += dp[i][j-1]
+                }
+            }
+            return dp[m-1][n-1]
+        }
+
         fun dpWay(m:Int, n:Int):Int {
 
             // dp[i][j] 表示从[i,j]位置出发到终点的路径数量
@@ -96,7 +114,7 @@ class Solution {
         }
 
     fun uniquePaths(m: Int, n: Int): Int {
-        return dpWay(m,n)
+        return dpWay2(m,n)
 //        return process(m,n,0,0)
     }
 }

@@ -71,6 +71,31 @@ class P_91_DecodeWays {
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 
+        // 再写一遍
+        fun dpWay2(s:String):Int {
+            var dp = IntArray(s.length+1)
+            dp[s.length] = 1
+            dp[s.length-1] = if (s[s.length-1] == '0') 0 else 1
+
+            for (i in s.length-2 downTo 0) {
+                if (s[i] == '0') {
+                    dp[i] = 0
+                    continue
+                }
+                dp[i] = dp[i+1]
+                if (s[i] == '1') {
+                    if (s[i+1] in '0'..'9') {
+                        dp[i] += dp[i+2]
+                    }
+                } else if (s[i] == '2') {
+                    if (s[i+1] in '0'..'6') {
+                        dp[i] += dp[i+2]
+                    }
+                }
+            }
+            return dp[0]
+        }
+
         // 本质还是对暴力递归的改写
         fun dpWay(s:String):Int {
             if (s[0] == '0') return 0
@@ -130,7 +155,7 @@ class Solution {
     fun numDecodings(s: String): Int {
         if (s.isNullOrEmpty()) return 0
         if (s[0] == '0') return 0
-        return dpWay(s)
+        return dpWay2(s)
 //        return process(s, 0)
     }
 }
@@ -139,5 +164,5 @@ class Solution {
 }
 
 fun main() {
-    println(P_91_DecodeWays.Solution().dpWay("2101"))
+    println(P_91_DecodeWays.Solution().dpWay2("2101"))
 }
