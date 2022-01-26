@@ -44,26 +44,30 @@
 // 你能将算法的时间复杂度降低到 O(n log(n)) 吗? 
 // 
 // Related Topics 数组 二分查找 动态规划 
-// 👍 2150 👎 0
+// 👍 2174 👎 0
 
 
-//leetcode submit region begin(Prohibit modification and deletion)
+class P_300_LongestIncreasingSubsequence {
+    //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 
-    var maxLen = Int.MIN_VALUE
-
-    fun dpWay(nums: IntArray):Int {
-        if (nums.size == 1) return 1
-
-        var dp = IntArray(nums.size+1)
-        dp[0] = 0
-        dp[1] = 1
-        for (i in 2..nums.size) {
-
+        fun dpWay(nums: IntArray):Int {
+            var dp = IntArray(nums.size)
+            dp[0] = 1
+            var ans = Int.MIN_VALUE
+            for (i in 1 until nums.size) {
+                dp[i] = 1
+                for (j in 0 until i) {
+                    if (nums[i] > nums[j]) {
+                        dp[i] = Math.max(dp[i], dp[j]+1)
+                    }
+                }
+                ans = Math.max(ans, dp[i])
+            }
+            return ans
         }
 
-        return dp[nums.size]
-    }
+    var maxLen = Int.MIN_VALUE
 
     fun process(nums: IntArray, index:Int, ans:MutableList<Int>) {
         if (index == nums.size) {
@@ -81,12 +85,12 @@ class Solution {
     }
 
     fun lengthOfLIS(nums: IntArray): Int {
-        process(nums, 0, mutableListOf())
-        return maxLen
+        if (nums.size == 1) return 1
+//        process(nums, 0, mutableListOf())
+//        return maxLen
+        return dpWay(nums)
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
-fun main() {
-    println(Solution().lengthOfLIS(intArrayOf(10,9,2,5,3,7,101,18)))
 }
