@@ -108,7 +108,7 @@ fun print2(root:TreeNode?) {
 
 fun main(args:Array<String>) {
 
-    var data = listOf(0,1,2,3,4,5,6)
+    var data = listOf(1,2,3,4,5,6,7)
 
     var root = offer.createTree(data)
     println("两个栈方法：")
