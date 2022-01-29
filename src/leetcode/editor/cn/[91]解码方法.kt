@@ -71,6 +71,31 @@ class P_91_DecodeWays {
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 
+        fun isValid2Num(c1:Char, c2:Char):Boolean {
+            return c1 == '1' && c2 in '0'..'9' || c1 == '2' && c2 in '0'..'6'
+        }
+
+        // 继续干！学无止境：动态方程
+        fun dpWay3(s:String):Int {
+            var N = s.length
+            var dp = IntArray(N+1)
+            // dp[i] ： 长度为i的字符串解码数
+
+            dp[0] = 1 // 空串解码出来空字符串
+            for (i in 1 .. N) {
+                // 最后一位按照单个字符解码
+                if (s[i-1] != '0') {
+                    dp[i] = dp[i-1]
+                }
+                // 最后一位按照两个字符解码
+                if (i-1 > 0 && isValid2Num(s[i-2], s[i-1])) {
+                    dp[i] += dp[i-2] // fixme：容易错！这里要用dp[i-2]的值，不能简单加1
+                }
+            }
+
+            return dp[N]
+        }
+
         // 再写一遍
         fun dpWay2(s:String):Int {
             var dp = IntArray(s.length+1)
@@ -155,7 +180,8 @@ class Solution {
     fun numDecodings(s: String): Int {
         if (s.isNullOrEmpty()) return 0
         if (s[0] == '0') return 0
-        return dpWay2(s)
+        return dpWay3(s)
+//        return dpWay2(s)
 //        return process(s, 0)
     }
 }
@@ -164,5 +190,5 @@ class Solution {
 }
 
 fun main() {
-    println(P_91_DecodeWays.Solution().dpWay2("2101"))
+    println(P_91_DecodeWays.Solution().numDecodings("1123"))
 }
