@@ -49,6 +49,26 @@
 class P_3_LongestSubstringWithoutRepeatingCharacters {
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+
+        // 再写一遍
+        fun lengthOfLongestSubstring(s:String):Int {
+            if (s.isEmpty()) return 0
+
+            var rk = -1
+            var ans = Int.MIN_VALUE
+            var set = mutableSetOf<Char>()
+            for (i in s.indices) {
+                while (rk+1 < s.length
+                        && set.contains(s[rk+1]).not()) {
+                    rk++
+                    set.add(s[rk])
+                }
+                ans = Math.max(ans, rk-i+1)
+                set.remove(s[i])
+            }
+            return ans
+        }
+
         /**
          * 为什么可以用双指针法？
          *
@@ -57,7 +77,7 @@ class Solution {
          * 第k个字符，因此可以右指针可以继续右移
          *
          */
-    fun lengthOfLongestSubstring(s: String): Int {
+    fun lengthOfLongestSubstring2(s: String): Int {
         if (s.isEmpty()) return 0
 
         // -1开始，0会错误！影响首位字符的add
