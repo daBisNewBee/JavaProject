@@ -52,6 +52,11 @@ class Solution {
          *
          * 这么解就没有重复解，想想为什么？避免了重复解！！
          *
+         * "通过控制数组的起始索引i来控制下一层决策树的可选择列表，达到对组合去重的目的；
+         * 虽然组合不重复，但元素本身可以重复，所以下一次的开始不是i+1，而是i"
+         *
+         * 这个参数 "index" 很重要！
+         *
          */
         fun dfs(candidates: IntArray, rest: Int, index:Int, ans:MutableList<List<Int>>, cur:MutableList<Int>) {
             if (rest == 0) {
