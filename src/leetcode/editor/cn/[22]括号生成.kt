@@ -35,6 +35,36 @@ class P_22_GenerateParentheses {
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 
+    fun process(n:Int, index:Int, ans: MutableList<String>, sb:StringBuilder, leftCount:Int) {
+        if (index == n shl 1) {
+            ans.add(sb.toString())
+            return
+        }
+        var rightCount = sb.length - leftCount
+
+        // 只能加左括号
+        if (leftCount == 0 || leftCount == rightCount) {
+            process(n, index+1, ans, sb.append("("), leftCount+1)
+            sb.deleteCharAt(sb.length-1)
+        } else {
+            // 可以左括号
+            if (leftCount < n) {
+                process(n, index+1, ans, sb.append("("), leftCount+1)
+                sb.deleteCharAt(sb.length-1)
+            }
+            // 可以右括号
+            process(n, index+1, ans, sb.append(")"), leftCount)
+            sb.deleteCharAt(sb.length-1)
+        }
+    }
+
+    fun generateParenthesis(n: Int): List<String> {
+        var sb = StringBuilder(n shl 1)
+        var ans = mutableListOf<String>()
+        process(n, 0, ans, sb, 0)
+        return ans
+    }
+
         // 回溯法
     fun helper(n:Int, open:Int, close:Int, sb:StringBuilder, ans:MutableList<String>) {
         if (sb.length == n * 2) {
@@ -56,7 +86,7 @@ class Solution {
         }
     }
 
-    fun generateParenthesis(n: Int): List<String> {
+    fun generateParenthesis2(n: Int): List<String> {
         var sb = StringBuilder(n * 2)
         var ans = ArrayList<String>()
         helper(n, 0, 0, sb, ans)
@@ -65,4 +95,8 @@ class Solution {
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
+}
+
+fun main() {
+    println(P_22_GenerateParentheses.Solution().generateParenthesis(3))
 }
