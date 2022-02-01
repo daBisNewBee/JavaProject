@@ -38,7 +38,34 @@ import kotlin.collections.HashMap
 class P_56_MergeIntervals {
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+
     fun merge(intervals: Array<IntArray>): Array<IntArray> {
+        if (intervals.isEmpty()) return emptyArray()
+
+        Arrays.sort(intervals) { o1, o2 -> o1[0] - o2[0]}
+
+        var queue = PriorityQueue<IntArray>(kotlin.Comparator { o1, o2 ->  o2[1] - o1[1]})
+
+        queue.offer(intervals[0])
+
+        intervals.forEach {
+            if (it[0] <= queue.peek()[1]) {
+                if (it[1] > queue.peek()[1]) {
+                    var cur = queue.poll()
+                    queue.offer(intArrayOf(cur[0], it[1]))
+                }
+            } else {
+                queue.offer(it)
+            }
+        }
+        var ans = Array(queue.size){IntArray(2)}
+        for (i in ans.size-1 downTo 0) {
+            ans[i] = queue.poll()
+        }
+        return ans
+    }
+
+    fun merge2(intervals: Array<IntArray>): Array<IntArray> {
         if (intervals.isEmpty()) return emptyArray()
         var result = ArrayList<IntArray>()
 
