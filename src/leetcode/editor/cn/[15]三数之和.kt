@@ -44,8 +44,47 @@ class P_15_ThreeSum {
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 
-        // 排序 + 双指针
+        // 再写一遍！不要忘了两处去重！
     fun threeSum(nums: IntArray): List<List<Int>> {
+        if (nums.size <= 2) return emptyList()
+
+        Arrays.sort(nums)
+        var ans = mutableListOf<List<Int>>()
+
+        for (first in nums.indices) {
+            // 容易忘记！要去重
+            if (first > 0 && nums[first] == nums[first-1]) {
+                continue
+            }
+            var target = -nums[first]
+            var third = nums.size-1
+
+            for (second in first+1 until nums.size) {
+                // 容易忘记！也要去重
+                if (second > first+1 && nums[second] == nums[second-1]) {
+                    continue
+                }
+
+                while (second < third && nums[second] + nums[third] > target) {
+                    third--
+                }
+                if (second == third) {
+                    break
+                }
+                if (nums[second] + nums[third] == target) {
+                    var cur = mutableListOf<Int>()
+                    cur.add(nums[first])
+                    cur.add(nums[second])
+                    cur.add(nums[third])
+                    ans.add(cur)
+                }
+            }
+        }
+        return ans
+    }
+
+        // 排序 + 双指针
+    fun threeSum2(nums: IntArray): List<List<Int>> {
 
         if (nums.isEmpty() || nums.size <= 2) return emptyList()
 
