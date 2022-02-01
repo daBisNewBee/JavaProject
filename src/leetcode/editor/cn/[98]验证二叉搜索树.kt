@@ -49,7 +49,7 @@ class P_98_ValidateBinarySearchTree {
  */
 class Solution {
 
-    // 中序BST应该是升序，当前值与前值判断
+    // 中序BST应该是升序，当前值与前值判断（遍历的时候就比较！不用都缓存下来）
     fun inOrder(node: TreeNode?):Boolean {
         node ?: return true
 
