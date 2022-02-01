@@ -1,4 +1,6 @@
-//给定一个二叉树，判断其是否是一个有效的二叉搜索树。 
+import java.util.*
+
+//给定一个二叉树，判断其是否是一个有效的二叉搜索树。
 //
 // 假设一个二叉搜索树具有如下特征： 
 //
@@ -46,7 +48,59 @@ class P_98_ValidateBinarySearchTree {
  * }
  */
 class Solution {
+
+    // 中序BST应该是升序，当前值与前值判断
+    fun inOrder(node: TreeNode?):Boolean {
+        node ?: return true
+
+        var stack = Stack<TreeNode>()
+
+        var cur :TreeNode? = node
+        var last = Long.MIN_VALUE
+
+        while (stack.isNotEmpty() || cur != null) {
+            while (cur != null) {
+                stack.push(cur)
+                cur = cur.left
+            }
+            cur = stack.pop()
+            if (cur.`val`.toLong() <= last) {
+                return false
+            }
+            last = cur.`val`.toLong()
+            cur = cur?.right
+        }
+        return true
+    }
+
+    class Node(var maxValue:Long, var minValue:Long, var isBst: Boolean)
+
+    // 二叉树递归套路
+    fun process(node: TreeNode?):Node {
+        node ?: return Node(Long.MIN_VALUE,Long.MAX_VALUE,true)
+
+        var leftInfo = process(node.left)
+
+        var rightInfo = process(node.right)
+
+        var bst = leftInfo.isBst
+        bst = bst && rightInfo.isBst
+
+        if (bst) {
+            bst = node.`val` > leftInfo.maxValue && node.`val` < rightInfo.minValue
+        }
+
+        var min = Math.min(Math.min(leftInfo.minValue, rightInfo.minValue), node.`val`.toLong())
+        var max = Math.max(Math.max(leftInfo.maxValue, rightInfo.maxValue), node.`val`.toLong())
+        return Node(max, min, bst)
+    }
+
     fun isValidBST(root: TreeNode?): Boolean {
+//        return inOrder(root)
+        return process(root).isBst
+    }
+
+    fun isValidBST2(root: TreeNode?): Boolean {
         // 用Int.MIN_VALUE 会报错？
         return helper(root, Long.MIN_VALUE, Long.MAX_VALUE)
     }
@@ -65,4 +119,9 @@ class Solution {
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
+}
+
+fun main() {
+    var tree = createTree(listOf(1,2,3,4,5,6,7))
+    P_98_ValidateBinarySearchTree.Solution().isValidBST(tree[0])
 }
