@@ -1,4 +1,6 @@
-//给定一棵二叉树，你需要计算它的直径长度。一棵二叉树的直径长度是任意两个结点路径长度中的最大值。这条路径可能穿过也可能不穿过根结点。 
+import offer.online.helper
+
+//给定一棵二叉树，你需要计算它的直径长度。一棵二叉树的直径长度是任意两个结点路径长度中的最大值。这条路径可能穿过也可能不穿过根结点。
 //
 // 
 //
@@ -35,6 +37,27 @@ class P_543_DiameterOfBinaryTree {
  */
 class Solution {
 
+    private var maxValue = Int.MIN_VALUE
+
+    // 递归解法
+    private fun process2(x:TreeNode?):Int {
+        x ?: return 0
+
+        var left = process2(x.left)
+
+        var right = process2(x.right)
+
+        maxValue = Math.max(maxValue, left + right + 1)
+
+        return Math.max(left, right) + 1
+    }
+
+    fun diameterOfBinaryTree(root: TreeNode?): Int {
+        maxValue = 1
+        process2(root)
+        return maxValue-1
+    }
+
     private class Info(var maxDistance:Int, var height:Int)
 
     private fun process(x: TreeNode?):Info {
@@ -69,7 +92,7 @@ class Solution {
         return Info(maxDistance, height)
     }
 
-    fun diameterOfBinaryTree(root: TreeNode?): Int {
+    fun diameterOfBinaryTree2(root: TreeNode?): Int {
         return process(root).maxDistance - 1
     }
 }
