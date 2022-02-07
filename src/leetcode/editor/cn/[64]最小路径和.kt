@@ -1,4 +1,5 @@
-//给定一个包含非负整数的 m x n 网格 grid ，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。 
+
+//给定一个包含非负整数的 m x n 网格 grid ，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。
 //
 // 说明：每次只能向下或者向右移动一步。 
 //
@@ -36,6 +37,34 @@
 class P_64_MinimumPathSum {
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+
+        // 空间复杂度 从o(MN)优化成o(N)
+        fun dpWay2(array:Array<IntArray>):Int {
+
+            if (array.isEmpty()) return 0
+
+            var M = array.size
+            var N = array[0].size
+
+            var rowDp  = IntArray(N)
+
+            rowDp[0] = array[0][0]
+
+            for (i in 1 until N) {
+                rowDp[i] = rowDp[i-1] + array[0][i]
+            }
+
+            for (i in 1 until M) {
+                for (j in 1 until N) {
+                    if (j == 1) {
+                        rowDp[0] += array[i][0]
+                    }
+                    rowDp[j] = Math.min(rowDp[j-1], rowDp[j]) + array[i][j]
+                }
+            }
+
+            return rowDp[N-1]
+        }
 
         fun dpWay(grid: Array<IntArray>):Int {
             val M = grid.size
@@ -87,10 +116,26 @@ class Solution {
 
     fun minPathSum(grid: Array<IntArray>): Int {
 //        process(grid, 0, 0, 0)
-        minSum = dpWay(grid)
+//        minSum = dpWay(grid)
+        minSum = dpWay2(grid)
         return minSum
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
+}
+
+
+fun main() {
+    var matrix = Array(3){IntArray(2)}
+//    matrix[0] = intArrayOf(1,3,1)
+//    matrix[1] = intArrayOf(1,5,1)
+//    matrix[2] = intArrayOf(4,2,1)
+
+    matrix[0] = intArrayOf(1,2)
+    matrix[1] = intArrayOf(5,6)
+    matrix[2] = intArrayOf(1,1)
+
+
+    println(P_64_MinimumPathSum.Solution().minPathSum(matrix)) // 14
 }
