@@ -56,8 +56,30 @@ class P_206_ReverseLinkedList {
  * }
  */
 class Solution {
-    // 时间o(n)，空间o(1)
+
+    /**
+     *
+     * 符合使用"递归"解法的三个条件：
+     *
+     * 1. 大问题可以拆分子问题
+     *
+     * 2. 子问题可以和大问题一样的求解
+     *
+     * 3. 存在最小子问题
+     */
     fun reverseList(head: ListNode?): ListNode? {
+        if (head?.next == null) {
+            return head
+        }
+        var ans = reverseList(head.next)
+        // 注意这里修改的是 "当前元素的指向的下一个元素"的指针 为head
+        head.next?.next = head
+        head.next = null
+        return ans
+    }
+
+    // 时间o(n)，空间o(1)
+    fun reverseList2(head: ListNode?): ListNode? {
         if (head == null) return null
 
         var pre :ListNode? = null

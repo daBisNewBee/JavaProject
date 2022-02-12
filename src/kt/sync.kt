@@ -193,6 +193,13 @@ var oo2 = Object()
  * "什么是死锁？"
  * https://www.cnblogs.com/yaphetsfang/p/11818483.html
  *
+ *  如何避免死锁？
+
+    1. 避免一个线程同时获得多个锁
+    2. 避免一个线程在锁内同时占用多个资源，尽量保证一个锁占用一个资源
+    3. 尝试使用定时锁，使用 lock.trylock（timeout）替代内部锁机制。
+    3. 数据库锁，加锁和解锁必须在一个数据库连接内，否则解锁会失败
+ *
  */
 fun deadLockTest() {
     Thread{
