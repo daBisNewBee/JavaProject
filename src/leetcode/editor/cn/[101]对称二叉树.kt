@@ -50,6 +50,32 @@ class Solution {
 
     /**
      *
+     * 这个解法写起来简单点！
+     *
+     * 问题可以转换为：两个树如何互为对称？
+     *
+     * 1. 根节点值相同
+     *
+     * 2. 每个树的右子树都与另一个树的左子树镜像对称
+     *
+     */
+    fun dfs(p:TreeNode?, q:TreeNode?):Boolean {
+        if (p == null && q == null) {
+            return true
+        }
+        if (p == null || q == null) {
+            return false
+        }
+        return p.`val` == q.`val` && dfs(p.left, q.right) && dfs(p.right, q.left)
+    }
+
+    fun isSymmetric(root: TreeNode?): Boolean {
+        return dfs(root, root)
+    }
+
+
+    /**
+     *
      * 为什么不能用"中序遍历比较回文串"？
      *
      * 中序不能推断一棵树。中序遍历是回文串不代表原树是对称的，比如[1,2,null,1]这样的。
@@ -72,7 +98,7 @@ class Solution {
      *
      */
 
-    fun isSymmetric(root: TreeNode?): Boolean {
+    fun isSymmetric2(root: TreeNode?): Boolean {
         root ?: return true
 
         var queue1 = LinkedList<TreeNode?>()
