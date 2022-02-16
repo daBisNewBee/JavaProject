@@ -25,6 +25,49 @@
 class P_43_MultiplyStrings {
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+
+        fun multiply(num1: String, num2: String): String {
+            if (num1 == "0" || num2 == "0") return "0"
+
+            var ans = "0"
+            for (i in num2.length-1 downTo 0) {
+                var tmp = StringBuilder()
+                repeat(num2.length - 1 - i) {
+                    tmp.append(0)
+                }
+                var carry = 0
+                var n2 = num2[i] - '0'
+
+                var j = num1.length-1
+                while (j >= 0 || carry != 0) {
+                    var n1 = if (j >= 0) num1[j] - '0' else 0
+                    var product = n1 * n2 + carry
+                    tmp.append(product % 10)
+                    carry = product / 10
+                    j--
+                }
+                ans = addString(ans, tmp.reverse().toString())
+            }
+            return ans
+        }
+
+        fun addString(num1:String, num2:String):String {
+            var i = num1.length-1
+            var j = num2.length-1
+            var carry = 0
+            var ans = StringBuilder()
+            while (i>=0 || j>=0 || carry != 0) {
+                var n1 = if (i >= 0) num1[i]-'0' else 0
+                var n2 = if (j >= 0) num2[j]-'0' else 0
+                var sum = n1 + n2 + carry
+                ans.append(sum % 10)
+                carry = sum / 10
+                i--
+                j--
+            }
+            return ans.reverse().toString()
+        }
+
         /**
          *
          * 优化竖式法：
@@ -37,7 +80,7 @@ class Solution {
          * 的两位分别位于 res 的res[i+j]、res[i+j+1]
          *
          */
-    fun multiply(num1: String, num2: String): String {
+    fun multiply2(num1: String, num2: String): String {
         if (num1 == "0" || num2 == "0") {
             return "0"
         }
@@ -63,4 +106,8 @@ class Solution {
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
+}
+
+fun main() {
+    println(P_43_MultiplyStrings.Solution().multiply("123", "456"))
 }
